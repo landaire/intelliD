@@ -26,6 +26,10 @@
     <depends>com.intellij.modules.lang</depends>
     -->
 
+    <depends>com.intellij</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+
     <application-components>
         <!-- Add your application components here -->
     </application-components>
