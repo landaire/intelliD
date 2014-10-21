@@ -1,7 +1,8 @@
 package com.wyrdtech.d.intellid.lexer;
 
 import com.intellij.lexer.Lexer;
-import com.intellij.openapi.editor.SyntaxHighlighterColors;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
@@ -47,47 +48,47 @@ public class DHighlighter extends SyntaxHighlighterBase {
 
     public static final TextAttributesKey LINE_COMMENT = createTextAttributesKey(
                                                                 "LINE_COMMENT",
-                                                                SyntaxHighlighterColors.LINE_COMMENT);
+                                                                DefaultLanguageHighlighterColors.LINE_COMMENT);
     public static final TextAttributesKey BLOCK_COMMENT = createTextAttributesKey(
                                                                 "BLOCK_COMMENT",
-                                                                SyntaxHighlighterColors.JAVA_BLOCK_COMMENT);
+                                                                DefaultLanguageHighlighterColors.BLOCK_COMMENT);
     public static final TextAttributesKey DOC_COMMENT = createTextAttributesKey(
                                                                 "DOC_COMMENT",
-                                                                SyntaxHighlighterColors.DOC_COMMENT);
+                                                                DefaultLanguageHighlighterColors.DOC_COMMENT);
 
     private static final TextAttributesKey[] COMMENTS = new TextAttributesKey[]{LINE_COMMENT,BLOCK_COMMENT,DOC_COMMENT};
 
 
     public static final TextAttributesKey STRING_LITERAL = createTextAttributesKey(
                                                                 "STRING_LITERAL",
-                                                                SyntaxHighlighterColors.STRING);
+                                                                DefaultLanguageHighlighterColors.STRING);
 
     public static final TextAttributesKey NUM_LITERAL = createTextAttributesKey(
                                                                 "NUM_LITERAL",
-                                                                SyntaxHighlighterColors.NUMBER);
+                                                                DefaultLanguageHighlighterColors.NUMBER);
 
 
     public static final TextAttributesKey OPERATOR = createTextAttributesKey(
                                                                 "OPERATOR",
-                                                                SyntaxHighlighterColors.OPERATION_SIGN);
+                                                                DefaultLanguageHighlighterColors.OPERATION_SIGN);
 
     public static final TextAttributesKey KEYWORD = createTextAttributesKey(
                                                                 "KEYWORD",
-                                                                SyntaxHighlighterColors.KEYWORD);
+                                                                DefaultLanguageHighlighterColors.KEYWORD);
 
     public static final TextAttributesKey PARENS = createTextAttributesKey(
                                                                 "PARENS",
-                                                                SyntaxHighlighterColors.PARENTHS);
+                                                                DefaultLanguageHighlighterColors.PARENTHESES);
     public static final TextAttributesKey BRACES = createTextAttributesKey(
                                                                 "BRACES",
-                                                                SyntaxHighlighterColors.BRACES);
+                                                                DefaultLanguageHighlighterColors.BRACES);
     public static final TextAttributesKey BRACKETS = createTextAttributesKey(
                                                                 "BRACKETS",
-                                                                SyntaxHighlighterColors.BRACKETS);
+                                                                DefaultLanguageHighlighterColors.BRACKETS);
 
 /*
     public static final TextAttributesKey IDENTIFIER = TextAttributesKey.createTextAttributesKey("IDENTIFIER",
-                                                                                                 SyntaxHighlighterColors.KEYWORD);
+                                                                                                 DefaultLanguageHighlighterColors.KEYWORD);
 */
 
     private static final Map<TokenSet, TextAttributesKey[]> keys;
