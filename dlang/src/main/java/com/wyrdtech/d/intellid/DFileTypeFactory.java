@@ -1,5 +1,6 @@
 package com.wyrdtech.d.intellid;
 
+import com.intellij.openapi.fileTypes.ExtensionFileNameMatcher;
 import com.intellij.openapi.fileTypes.FileTypeConsumer;
 import com.intellij.openapi.fileTypes.FileTypeFactory;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class DFileTypeFactory extends FileTypeFactory {
     @Override
     public void createFileTypes(@NotNull final FileTypeConsumer fileTypeConsumer) {
-        fileTypeConsumer.consume(DFileType.INSTANCE, DFileType.DEFAULT_EXTENSION);
+        fileTypeConsumer.consume(DFileType.INSTANCE, new ExtensionFileNameMatcher(DFileType.DEFAULT_EXTENSION));
     }
 /*
 
