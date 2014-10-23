@@ -3,17 +3,10 @@ package com.wyrdtech.d.intellid.lexer;
 import com.intellij.lexer.Lexer;
 import com.intellij.lexer.LexerPosition;
 import com.intellij.psi.tree.IElementType;
-import com.wyrdtech.parsed.lexer.token.BaseTokenFactory;
-import com.wyrdtech.parsed.lexer.token.TokenFactory;
-import com.wyrdtech.parsed.lexer.token.TokenType;
 import dtool.parser.DeeLexer;
-import dtool.parser.DeeTokenHelper;
-import dtool.parser.DeeTokens;
 import dtool.parser.common.Token;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.io.IOException;
 
 /**
  * IntelliJ Lexer for D, wrapper for the ParseD lexer.

@@ -8,9 +8,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="IDEA IU-139.1.20" jdkType="IDEA JDK" />
+    <orderEntry type="jdk" jdkName="IDEA IU-139.144.2 (jdk7)" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="parsed" />
     <orderEntry type="module" module-name="org.dsource.ddt.dtool" />
   </component>
 </module>

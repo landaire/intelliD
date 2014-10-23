@@ -3,8 +3,6 @@ package com.wyrdtech.d.intellid.lexer;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
 
-import com.wyrdtech.parsed.lexer.token.Token;
-import com.wyrdtech.parsed.lexer.token.TokenType;
 import dtool.parser.DeeTokens;
 
 import java.util.HashMap;
