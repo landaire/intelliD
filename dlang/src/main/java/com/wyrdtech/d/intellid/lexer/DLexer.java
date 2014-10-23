@@ -77,8 +77,12 @@ public class DLexer extends Lexer {
 
     @Override
     public void advance() {
-        token = lexer.next();
-        cur_offset = start_offset + lexer.getLexingPosition();
+        if (cur_offset == buffer.length()) {
+            token = null;
+        } else {
+            token = lexer.next();
+            cur_offset = start_offset + lexer.getLexingPosition();
+        }
 
         if (token != null) {
             state = token.getType().ordinal();
