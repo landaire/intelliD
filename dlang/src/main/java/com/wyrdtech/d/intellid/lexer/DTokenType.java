@@ -5,6 +5,7 @@ import com.intellij.psi.tree.TokenSet;
 
 import com.wyrdtech.parsed.lexer.token.Token;
 import com.wyrdtech.parsed.lexer.token.TokenType;
+import dtool.parser.DeeTokens;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,30 +21,30 @@ import java.util.Map;
  */
 public abstract class DTokenType implements com.intellij.psi.TokenType {
 
-    private static Map<TokenType, DElementType> tokens;
+    private static Map<DeeTokens, DElementType> tokens;
 
 
     // Some explicit tokens
 //    public static final IElementType UNKNOWN = valueOf("Unknown");
 
-    public static final DElementType LINE_COMMENT = valueOf(TokenType.LineComment);
-    public static final DElementType DOC_LINE_COMMENT = valueOf(TokenType.DocLineComment);
-    public static final DElementType BLOCK_COMMENT = valueOf(TokenType.BlockComment);
-    public static final DElementType BLOCK_COMMENT_NEST = valueOf(TokenType.BlockCommentNest);
-    public static final DElementType DOC_COMMENT = valueOf(TokenType.DocComment);
-    public static final DElementType DOC_COMMENT_NEST = valueOf(TokenType.DocCommentNest);
+    public static final DElementType LINE_COMMENT = valueOf(DeeTokens.COMMENT_LINE);
+    public static final DElementType DOC_LINE_COMMENT = valueOf(DeeTokens.DOCCOMMENT_LINE);
+    public static final DElementType BLOCK_COMMENT = valueOf(DeeTokens.COMMENT_MULTI);
+    public static final DElementType BLOCK_COMMENT_NEST = valueOf(DeeTokens.COMMENT_NESTED);
+    public static final DElementType DOC_COMMENT = valueOf(DeeTokens.DOCCOMMENT_MULTI);
+    public static final DElementType DOC_COMMENT_NEST = valueOf(DeeTokens.DOCCOMMENT_NESTED);
 
-    public static final DElementType LITERAL = valueOf(TokenType.Literal);
-    public static final DElementType CHAR_LITERAL = valueOf(TokenType.LiteralChar);
-    public static final DElementType STRING_LITERAL = valueOf(TokenType.LiteralUtf8);
-    public static final DElementType WSTR_LITERAL = valueOf(TokenType.LiteralUtf16);
-    public static final DElementType DSTR_LITERAL = valueOf(TokenType.LiteralUtf32);
+    public static final DElementType LITERAL = valueOf(DeeTokens.STRING_TOKENS);
+    public static final DElementType CHAR_LITERAL = valueOf(DeeTokens.KW_CHAR);
+    public static final DElementType STRING_LITERAL = valueOf(DeeTokens.STRING_WYSIWYG);
+    public static final DElementType WSTR_LITERAL = valueOf(DeeTokens.KW_DCHAR);
+    public static final DElementType DSTR_LITERAL = valueOf(DeeTokens.KW_WCHAR);
 
-    public static final DElementType IDENTIFIER = valueOf(TokenType.Identifier);
+    public static final DElementType IDENTIFIER = valueOf(DeeTokens.IDENTIFIER);
 
     // Token sets for special treatment while parsing
-    public static final TokenSet WHITESPACES = TokenSet.create(valueOf(TokenType.EOF),
-                                                               valueOf(TokenType.Whitespace));
+    public static final TokenSet WHITESPACES = TokenSet.create(valueOf(DeeTokens.EOF),
+                                                               valueOf(DeeTokens.WHITESPACE));
 
     public static final TokenSet COMMENTS = TokenSet.create(LINE_COMMENT,
                                                             DOC_LINE_COMMENT,
@@ -56,200 +57,198 @@ public abstract class DTokenType implements com.intellij.psi.TokenType {
                                                                    DSTR_LITERAL,
                                                                    STRING_LITERAL);
 
-    public static final TokenSet PARENS = TokenSet.create(valueOf(TokenType.OpenParenthesis),
-                                                          valueOf(TokenType.CloseParenthesis));
-    public static final TokenSet BRACE = TokenSet.create(valueOf(TokenType.OpenCurlyBrace),
-                                                         valueOf(TokenType.CloseCurlyBrace));
-    public static final TokenSet BRACKET = TokenSet.create(valueOf(TokenType.OpenSquareBracket),
-                                                           valueOf(TokenType.CloseSquareBracket));
+    public static final TokenSet PARENS = TokenSet.create(valueOf(DeeTokens.OPEN_PARENS),
+                                                          valueOf(DeeTokens.CLOSE_PARENS));
+    public static final TokenSet BRACE = TokenSet.create(valueOf(DeeTokens.OPEN_BRACE),
+                                                         valueOf(DeeTokens.CLOSE_BRACE));
+    public static final TokenSet BRACKET = TokenSet.create(valueOf(DeeTokens.OPEN_BRACKET),
+                                                           valueOf(DeeTokens.CLOSE_BRACKET));
 
     public static final TokenSet KEYWORD;
     public static final TokenSet OPERATOR;
 
     static {
         KEYWORD = TokenSet.create(
-            valueOf(TokenType.Abstract),
-            valueOf(TokenType.Alias),
-            valueOf(TokenType.Align),
-            valueOf(TokenType.Asm),
-            valueOf(TokenType.Assert),
-            valueOf(TokenType.Auto),
-            valueOf(TokenType.Body),
-            valueOf(TokenType.Bool),
-            valueOf(TokenType.Break),
-            valueOf(TokenType.Byte),
-            valueOf(TokenType.Case),
-            valueOf(TokenType.Cast),
-            valueOf(TokenType.Catch),
-            valueOf(TokenType.Cdouble),
-            valueOf(TokenType.Cent),
-            valueOf(TokenType.Cfloat),
-            valueOf(TokenType.Char),
-            valueOf(TokenType.Class),
-            valueOf(TokenType.Const),
-            valueOf(TokenType.Continue),
-            valueOf(TokenType.Creal),
-            valueOf(TokenType.Dchar),
-            valueOf(TokenType.Debug),
-            valueOf(TokenType.Default),
-            valueOf(TokenType.Delegate),
-            valueOf(TokenType.Delete),
-            valueOf(TokenType.Deprecated),
-            valueOf(TokenType.Do),
-            valueOf(TokenType.Double),
-            valueOf(TokenType.Else),
-            valueOf(TokenType.Enum),
-            valueOf(TokenType.Export),
-            valueOf(TokenType.Extern),
-            valueOf(TokenType.False),
-            valueOf(TokenType.Final),
-            valueOf(TokenType.Finally),
-            valueOf(TokenType.Float),
-            valueOf(TokenType.For),
-            valueOf(TokenType.Foreach),
-            valueOf(TokenType.Foreach_Reverse),
-            valueOf(TokenType.Function),
-            valueOf(TokenType.Goto),
-            valueOf(TokenType.Idouble),
-            valueOf(TokenType.If),
-            valueOf(TokenType.Ifloat),
-            valueOf(TokenType.Immutable),
-            valueOf(TokenType.Import),
-            valueOf(TokenType.In),
-            valueOf(TokenType.InOut),
-            valueOf(TokenType.Int),
-            valueOf(TokenType.Interface),
-            valueOf(TokenType.Invariant),
-            valueOf(TokenType.Ireal),
-            valueOf(TokenType.Is),
-            valueOf(TokenType.Lazy),
-            valueOf(TokenType.Long),
-            valueOf(TokenType.Macro),
-            valueOf(TokenType.Mixin),
-            valueOf(TokenType.Module),
-            valueOf(TokenType.New),
-            valueOf(TokenType.Nothrow),
-            valueOf(TokenType.Null),
-            valueOf(TokenType.Out),
-            valueOf(TokenType.Override),
-            valueOf(TokenType.Package),
-            valueOf(TokenType.Pragma),
-            valueOf(TokenType.Private),
-            valueOf(TokenType.Protected),
-            valueOf(TokenType.Public),
-            valueOf(TokenType.Pure),
-            valueOf(TokenType.Real),
-            valueOf(TokenType.Ref),
-            valueOf(TokenType.Return),
-            valueOf(TokenType.Scope),
-            valueOf(TokenType.Shared),
-            valueOf(TokenType.Short),
-            valueOf(TokenType.Static),
-            valueOf(TokenType.Struct),
-            valueOf(TokenType.Super),
-            valueOf(TokenType.Switch),
-            valueOf(TokenType.Synchronized),
-            valueOf(TokenType.Template),
-            valueOf(TokenType.This),
-            valueOf(TokenType.Throw),
-            valueOf(TokenType.True),
-            valueOf(TokenType.Try),
-            valueOf(TokenType.Typedef),
-            valueOf(TokenType.Typeid),
-            valueOf(TokenType.Typeof),
-            valueOf(TokenType.Ubyte),
-            valueOf(TokenType.Ucent),
-            valueOf(TokenType.Uint),
-            valueOf(TokenType.Ulong),
-            valueOf(TokenType.Union),
-            valueOf(TokenType.Unittest),
-            valueOf(TokenType.Ushort),
-            valueOf(TokenType.Version),
-            valueOf(TokenType.Void),
-            valueOf(TokenType.Volatile),
-            valueOf(TokenType.Wchar),
-            valueOf(TokenType.While),
-            valueOf(TokenType.With),
-            valueOf(TokenType.__FILE__),
-            valueOf(TokenType.__LINE__),
-            valueOf(TokenType.__gshared),
-            valueOf(TokenType.__traits),
-            valueOf(TokenType.__vector),
-            valueOf(TokenType.__parameters)
+            valueOf(DeeTokens.KW_ABSTRACT),
+            valueOf(DeeTokens.KW_ALIAS),
+            valueOf(DeeTokens.KW_ALIGN),
+            valueOf(DeeTokens.KW_ASM),
+            valueOf(DeeTokens.KW_ASSERT),
+            valueOf(DeeTokens.KW_AUTO),
+            valueOf(DeeTokens.KW_BODY),
+            valueOf(DeeTokens.KW_BOOL),
+            valueOf(DeeTokens.KW_BREAK),
+            valueOf(DeeTokens.KW_BYTE),
+            valueOf(DeeTokens.KW_CASE),
+            valueOf(DeeTokens.KW_CAST),
+            valueOf(DeeTokens.KW_CATCH),
+            valueOf(DeeTokens.KW_CDOUBLE),
+            valueOf(DeeTokens.KW_CENT),
+            valueOf(DeeTokens.KW_CFLOAT),
+            valueOf(DeeTokens.KW_CHAR),
+            valueOf(DeeTokens.KW_CLASS),
+            valueOf(DeeTokens.KW_CONST),
+            valueOf(DeeTokens.KW_CONTINUE),
+            valueOf(DeeTokens.KW_CREAL),
+            valueOf(DeeTokens.KW_DCHAR),
+            valueOf(DeeTokens.KW_DEBUG),
+            valueOf(DeeTokens.KW_DEFAULT),
+            valueOf(DeeTokens.KW_DELEGATE),
+            valueOf(DeeTokens.KW_DELETE),
+            valueOf(DeeTokens.KW_DEPRECATED),
+            valueOf(DeeTokens.KW_DO),
+            valueOf(DeeTokens.KW_DOUBLE),
+            valueOf(DeeTokens.KW_ELSE),
+            valueOf(DeeTokens.KW_ENUM),
+            valueOf(DeeTokens.KW_EXPORT),
+            valueOf(DeeTokens.KW_EXTERN),
+            valueOf(DeeTokens.KW_FALSE),
+            valueOf(DeeTokens.KW_FINAL),
+            valueOf(DeeTokens.KW_FINALLY),
+            valueOf(DeeTokens.KW_FLOAT),
+            valueOf(DeeTokens.KW_FOR),
+            valueOf(DeeTokens.KW_FOREACH),
+            valueOf(DeeTokens.KW_FOREACH_REVERSE),
+            valueOf(DeeTokens.KW_FUNCTION),
+            valueOf(DeeTokens.KW_GOTO),
+            valueOf(DeeTokens.KW_IDOUBLE),
+            valueOf(DeeTokens.KW_IF),
+            valueOf(DeeTokens.KW_IFLOAT),
+            valueOf(DeeTokens.KW_IMMUTABLE),
+            valueOf(DeeTokens.KW_IMPORT),
+            valueOf(DeeTokens.KW_IN),
+            valueOf(DeeTokens.KW_INOUT),
+            valueOf(DeeTokens.KW_INT),
+            valueOf(DeeTokens.KW_INTERFACE),
+            valueOf(DeeTokens.KW_INVARIANT),
+            valueOf(DeeTokens.KW_IREAL),
+            valueOf(DeeTokens.KW_IS),
+            valueOf(DeeTokens.KW_LAZY),
+            valueOf(DeeTokens.KW_LONG),
+            valueOf(DeeTokens.KW_MACRO),
+            valueOf(DeeTokens.KW_MIXIN),
+            valueOf(DeeTokens.KW_MODULE),
+            valueOf(DeeTokens.KW_NEW),
+            valueOf(DeeTokens.KW_NOTHROW),
+            valueOf(DeeTokens.KW_NULL),
+            valueOf(DeeTokens.KW_OUT),
+            valueOf(DeeTokens.KW_OVERRIDE),
+            valueOf(DeeTokens.KW_PACKAGE),
+            valueOf(DeeTokens.KW_PRAGMA),
+            valueOf(DeeTokens.KW_PRIVATE),
+            valueOf(DeeTokens.KW_PROTECTED),
+            valueOf(DeeTokens.KW_PUBLIC),
+            valueOf(DeeTokens.KW_PURE),
+            valueOf(DeeTokens.KW_REAL),
+            valueOf(DeeTokens.KW_REF),
+            valueOf(DeeTokens.KW_RETURN),
+            valueOf(DeeTokens.KW_SCOPE),
+            valueOf(DeeTokens.KW_SHARED),
+            valueOf(DeeTokens.KW_SHORT),
+            valueOf(DeeTokens.KW_STATIC),
+            valueOf(DeeTokens.KW_STRUCT),
+            valueOf(DeeTokens.KW_SUPER),
+            valueOf(DeeTokens.KW_SWITCH),
+            valueOf(DeeTokens.KW_SYNCHRONIZED),
+            valueOf(DeeTokens.KW_TEMPLATE),
+            valueOf(DeeTokens.KW_THIS),
+            valueOf(DeeTokens.KW_THROW),
+            valueOf(DeeTokens.KW_TRUE),
+            valueOf(DeeTokens.KW_TRY),
+            valueOf(DeeTokens.KW_TYPEDEF),
+            valueOf(DeeTokens.KW_TYPEID),
+            valueOf(DeeTokens.KW_TYPEOF),
+            valueOf(DeeTokens.KW_UBYTE),
+            valueOf(DeeTokens.KW_UCENT),
+            valueOf(DeeTokens.KW_UINT),
+            valueOf(DeeTokens.KW_ULONG),
+            valueOf(DeeTokens.KW_UNION),
+            valueOf(DeeTokens.KW_UNITTEST),
+            valueOf(DeeTokens.KW_USHORT),
+            valueOf(DeeTokens.KW_VERSION),
+            valueOf(DeeTokens.KW_VOID),
+            valueOf(DeeTokens.KW_VOLATILE),
+            valueOf(DeeTokens.KW_WCHAR),
+            valueOf(DeeTokens.KW_WHILE),
+            valueOf(DeeTokens.KW_WITH),
+            valueOf(DeeTokens.KW___FILE__),
+            valueOf(DeeTokens.KW___LINE__),
+            valueOf(DeeTokens.KW___GSHARED),
+            valueOf(DeeTokens.KW___TRAITS),
+            valueOf(DeeTokens.KW___VECTOR)
             );
     }
 
     static {
         OPERATOR = TokenSet.create(
-            valueOf(TokenType.Assign),
-            valueOf(TokenType.Plus),
-            valueOf(TokenType.Minus),
-            valueOf(TokenType.Times),
-            valueOf(TokenType.Div),
-            valueOf(TokenType.Mod),
-            valueOf(TokenType.Colon),
-            valueOf(TokenType.DoubleDot),
-            valueOf(TokenType.Semicolon),
-            valueOf(TokenType.Question),
-            valueOf(TokenType.Dollar),
-            valueOf(TokenType.Comma),
-            valueOf(TokenType.Dot),
-            valueOf(TokenType.GreaterThan),
-            valueOf(TokenType.LessThan),
-            valueOf(TokenType.Not),
-            valueOf(TokenType.LogicalAnd),
-            valueOf(TokenType.LogicalOr),
-            valueOf(TokenType.Tilde),
-            valueOf(TokenType.BitwiseAnd),
-            valueOf(TokenType.BitwiseOr),
-            valueOf(TokenType.Xor),
-            valueOf(TokenType.Increment),
-            valueOf(TokenType.Decrement),
-            valueOf(TokenType.Equal),
-            valueOf(TokenType.NotEqual),
-            valueOf(TokenType.GreaterEqual),
-            valueOf(TokenType.LessEqual),
-            valueOf(TokenType.ShiftLeft),
-            valueOf(TokenType.PlusAssign),
-            valueOf(TokenType.MinusAssign),
-            valueOf(TokenType.TimesAssign),
-            valueOf(TokenType.DivAssign),
-            valueOf(TokenType.ModAssign),
-            valueOf(TokenType.BitwiseAndAssign),
-            valueOf(TokenType.BitwiseOrAssign),
-            valueOf(TokenType.XorAssign),
-            valueOf(TokenType.ShiftLeftAssign),
-            valueOf(TokenType.TildeAssign),
-            valueOf(TokenType.ShiftRightAssign),
-            valueOf(TokenType.TripleRightShiftAssign),
-            valueOf(TokenType.Pow),
-            valueOf(TokenType.PowAssign),
-            valueOf(TokenType.Unordered),
-            valueOf(TokenType.UnorderedOrEqual),
-            valueOf(TokenType.LessOrGreater),
-            valueOf(TokenType.LessEqualOrGreater),
-            valueOf(TokenType.UnorderedGreaterOrEqual),
-            valueOf(TokenType.UnorderedOrLess),
-            valueOf(TokenType.UnorderedLessOrEqual),
-            valueOf(TokenType.UnorderedOrGreater),
-            valueOf(TokenType.ShiftRight),
-            valueOf(TokenType.ShiftRightUnsigned),
-            valueOf(TokenType.TripleDot),
-            valueOf(TokenType.At),
-            valueOf(TokenType.GoesTo),
-            valueOf(TokenType.Hash)
+            valueOf(DeeTokens.ASSIGN),
+            valueOf(DeeTokens.PLUS),
+            valueOf(DeeTokens.MINUS),
+            valueOf(DeeTokens.STAR),
+            valueOf(DeeTokens.DIV),
+            valueOf(DeeTokens.MOD),
+            valueOf(DeeTokens.COLON),
+            valueOf(DeeTokens.DOUBLE_DOT),
+            valueOf(DeeTokens.SEMICOLON),
+            valueOf(DeeTokens.QUESTION),
+            valueOf(DeeTokens.DOLLAR),
+            valueOf(DeeTokens.COMMA),
+            valueOf(DeeTokens.DOT),
+            valueOf(DeeTokens.GREATER_THAN),
+            valueOf(DeeTokens.LESS_THAN),
+            valueOf(DeeTokens.NOT),
+            valueOf(DeeTokens.LOGICAL_AND),
+            valueOf(DeeTokens.LOGICAL_OR),
+            valueOf(DeeTokens.CONCAT),
+            valueOf(DeeTokens.AND),
+            valueOf(DeeTokens.OR),
+            valueOf(DeeTokens.XOR),
+            valueOf(DeeTokens.INCREMENT),
+            valueOf(DeeTokens.DECREMENT),
+            valueOf(DeeTokens.EQUALS),
+            valueOf(DeeTokens.NOT_EQUAL),
+            valueOf(DeeTokens.GREATER_EQUAL),
+            valueOf(DeeTokens.LESS_EQUAL),
+            valueOf(DeeTokens.LEFT_SHIFT),
+            valueOf(DeeTokens.PLUS_ASSIGN),
+            valueOf(DeeTokens.MINUS_ASSIGN),
+            valueOf(DeeTokens.MULT_ASSIGN),
+            valueOf(DeeTokens.DIV_ASSIGN),
+            valueOf(DeeTokens.MOD_ASSIGN),
+            valueOf(DeeTokens.AND_ASSIGN),
+            valueOf(DeeTokens.OR_ASSIGN),
+            valueOf(DeeTokens.XOR_ASSIGN),
+            valueOf(DeeTokens.LEFT_SHIFT_ASSIGN),
+            valueOf(DeeTokens.CONCAT_ASSIGN),
+            valueOf(DeeTokens.RIGHT_SHIFT_ASSIGN),
+            valueOf(DeeTokens.TRIPLE_RSHIFT_ASSIGN),
+            valueOf(DeeTokens.POW),
+            valueOf(DeeTokens.POW_ASSIGN),
+            valueOf(DeeTokens.UNORDERED),
+            valueOf(DeeTokens.UNORDERED_E),
+            valueOf(DeeTokens.LESS_GREATER),
+            valueOf(DeeTokens.LESS_GREATER_EQUAL),
+            valueOf(DeeTokens.UNORDERED_GE),
+            valueOf(DeeTokens.UNORDERED_L),
+            valueOf(DeeTokens.UNORDERED_LE),
+            valueOf(DeeTokens.UNORDERED_G),
+            valueOf(DeeTokens.RIGHT_SHIFT),
+            valueOf(DeeTokens.TRIPLE_RSHIFT),
+            valueOf(DeeTokens.TRIPLE_DOT),
+            valueOf(DeeTokens.AT),
+            valueOf(DeeTokens.LAMBDA)
             );
     }
 
 
     // Find the DElementType for the given ParseD token type.
     // Multiple calls with the same type will result in the same DElementType instance being returned.
-    public static synchronized DElementType valueOf(TokenType type) {
+    public static synchronized DElementType valueOf(DeeTokens type) {
         if (type == null) {
             return null;
         }
         if (tokens == null) {
-            tokens = new HashMap<TokenType, DElementType>();
+            tokens = new HashMap<DeeTokens, DElementType>();
         }
 
         // Check the cache map for a matching token
@@ -267,29 +266,29 @@ public abstract class DTokenType implements com.intellij.psi.TokenType {
     // TODO: less ugliness
     public static TokenSet findSet(IElementType type) {
         TokenSet set = null;
-        if (DTokenType.COMMENTS.contains(type)) {
-            set = DTokenType.COMMENTS;
+        if (COMMENTS.contains(type)) {
+            set = COMMENTS;
         }
-        if (DTokenType.PARENS.contains(type)) {
-            set = DTokenType.PARENS;
+        if (PARENS.contains(type)) {
+            set = PARENS;
         }
-        if (DTokenType.BRACE.contains(type)) {
-            set = DTokenType.BRACE;
+        if (BRACE.contains(type)) {
+            set = BRACE;
         }
-        if (DTokenType.BRACKET.contains(type)) {
-            set = DTokenType.BRACKET;
+        if (BRACKET.contains(type)) {
+            set = BRACKET;
         }
-        if (DTokenType.OPERATOR.contains(type)) {
-            set = DTokenType.OPERATOR;
+        if (OPERATOR.contains(type)) {
+            set = OPERATOR;
         }
-        if (DTokenType.KEYWORD.contains(type)) {
-            set = DTokenType.KEYWORD;
+        if (KEYWORD.contains(type)) {
+            set = KEYWORD;
         }
-        if (DTokenType.STRING_LITERALS.contains(type)) {
-            set = DTokenType.STRING_LITERALS;
+        if (STRING_LITERALS.contains(type)) {
+            set = STRING_LITERALS;
         }
-        if (DTokenType.WHITESPACES.contains(type)) {
-            set = DTokenType.WHITESPACES;
+        if (WHITESPACES.contains(type)) {
+            set = WHITESPACES;
         }
         return set;
     }

@@ -1,0 +1,119 @@
+{
+	"mainPackage": "xptobundle",
+	"packages": [
+		{
+			"copyFiles": [],
+			"postGenerateCommands": [],
+			"description": "An example project skeleton",
+			"targetFileName": "xptobundle.exe",
+			"versions": [],
+			"sourcePaths": [
+				"src/",
+				"src-test"
+			],
+			"importPaths": [
+				"source/",
+				"src/"
+			],
+			"workingDirectory": "bin",
+			"version": "~master",
+			"libs": [],
+			"lflags": [],
+			"copyright": "Copyright © 2000, Your Name",
+			"name__MISSING": "xptobundle",
+			"targetName": "xptobundle",
+			"stringImportPaths": [],
+			"homepage": "http://example.org",
+			"authors": [
+				"Your Name"
+			],
+			"debugVersions": [],
+			"preBuildCommands": [],
+			"mainSourceFile": "src\\app.d",
+			"postBuildCommands": [],
+			"targetType": "executable",
+			"dependencies": [
+				"foo_lib"
+			],
+			"buildRequirements": [],
+			"dflags": [],
+			"preGenerateCommands": [],
+			"license": "",
+			"path": "relativePath/blah/foo/is/an/error/too",
+			"targetPath": "bin",
+			"options": [],
+			"files": [
+				{
+					"path": "src\\app.d",
+					"type": "source"
+				},
+				{
+					"path": "src\\xptoApp.d",
+					"type": "source"
+				},
+				{
+					"path": "src-test\\xptoAppTest.d",
+					"type": "source"
+				},
+				{
+					"path": "source\\app.d",
+					"type": "import"
+				}
+			]
+		},
+		{
+			"copyFiles": [],
+			"postGenerateCommands": [],
+			"description": "An example project skeleton",
+			"targetFileName": "foo_lib.lib",
+			"versions": [],
+			"importPaths": [
+				"src/"
+			],
+			"workingDirectory": "",
+			"version": "~master",
+			"libs": [],
+			"lflags": [],
+			"copyright": "Copyright © 2000, Your Name",
+			"name__MISSING": "foo_lib",
+			"targetName": "foo_lib",
+			"stringImportPaths": [],
+			"homepage": "http://example.org",
+			"authors": [
+				"Your Name"
+			],
+			"debugVersions": [],
+			"preBuildCommands": [],
+			"mainSourceFile": "",
+			"postBuildCommands": [],
+			"targetType": "library",
+			"dependencies": [
+				"bar_lib"
+			],
+			"buildRequirements": [],
+			"dflags": [],
+			"preGenerateCommands": [],
+			"license": "",
+			"targetPath": "",
+			"options": [],
+			"files": [
+				{
+					"path": "src\\fooLib.d",
+					"type": "source"
+				},
+				{
+					"path": "src2\\test\\fooLib.d",
+					"type": "source"
+				}
+			]
+		}
+	],
+	"configuration": "application",
+	"compiler": "dmd",
+	"architecture": [
+		"x86"
+	],
+	"platform": [
+		"windows"
+	]
+}

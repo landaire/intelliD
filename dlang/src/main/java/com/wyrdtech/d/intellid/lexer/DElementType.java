@@ -3,6 +3,7 @@ package com.wyrdtech.d.intellid.lexer;
 import com.intellij.psi.tree.IElementType;
 import com.wyrdtech.d.intellid.DLanguage;
 import com.wyrdtech.parsed.lexer.token.TokenType;
+import dtool.parser.DeeTokens;
 
 /**
  * An element of the D language, for tokenizing.
@@ -13,9 +14,9 @@ import com.wyrdtech.parsed.lexer.token.TokenType;
  */
 public class DElementType extends IElementType {
 
-    private final TokenType type;
+    private final DeeTokens type;
 
-    public DElementType(final TokenType type) {
+    public DElementType(final DeeTokens type) {
         super(type.name(), DLanguage.INSTANCE);
 
         this.type = type;
@@ -24,7 +25,7 @@ public class DElementType extends IElementType {
     /**
      * @return ParserD TokenType of this element
      */
-    public TokenType getType() {
+    public DeeTokens getType() {
         return type;
     }
 
