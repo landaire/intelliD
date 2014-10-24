@@ -12,6 +12,6 @@
     </content>
     <orderEntry type="jdk" jdkName="IDEA IU-139.144.2" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="org.dsource.ddt.dtool" />
+    <orderEntry type="module" module-name="plugin_tooling" />
   </component>
 </module>
