@@ -52,7 +52,7 @@
 			</plugins>
 			</build>
 		</profile>
-		
+
 		<profile>
 			<id>platform-linux</id>
 			<activation><os><family>linux</family></os></activation>
@@ -80,7 +80,7 @@
 			</build>
 		</profile>
 	</profiles>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -96,7 +96,7 @@
 					<argLine>${dtool.testsLiteModeOption}</argLine>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
@@ -110,7 +110,7 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
