@@ -32,9 +32,9 @@ public abstract class DTokenType implements com.intellij.psi.TokenType {
     public static final DElementType DOC_COMMENT = valueOf(DeeTokens.DOCCOMMENT_MULTI);
     public static final DElementType DOC_COMMENT_NEST = valueOf(DeeTokens.DOCCOMMENT_NESTED);
 
-    public static final DElementType LITERAL = valueOf(DeeTokens.STRING_TOKENS);
+    public static final DElementType LITERAL = valueOf(DeeTokens.GROUP_STRING);
     public static final DElementType CHAR_LITERAL = valueOf(DeeTokens.KW_CHAR);
-    public static final DElementType STRING_LITERAL = valueOf(DeeTokens.STRING_WYSIWYG);
+    public static final DElementType STRING_LITERAL = valueOf(DeeTokens.STRING_DQ);
     public static final DElementType WSTR_LITERAL = valueOf(DeeTokens.KW_DCHAR);
     public static final DElementType DSTR_LITERAL = valueOf(DeeTokens.KW_WCHAR);
 
