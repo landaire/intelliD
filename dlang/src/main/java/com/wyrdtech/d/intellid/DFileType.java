@@ -2,6 +2,7 @@ package com.wyrdtech.d.intellid;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.util.IconLoader;
+import dtool.engine.modules.ModuleNamingRules;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,7 +15,8 @@ public class DFileType extends LanguageFileType {
 
     public static final LanguageFileType INSTANCE = new DFileType();
 
-    public static final String DEFAULT_EXTENSION = "d";
+    public static final String SOURCE_EXTENSION = "d";
+    public static final String HEADER_EXTENSION = "di";
 
     private DFileType() {
         super(DLanguage.INSTANCE);
@@ -35,8 +37,10 @@ public class DFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getDefaultExtension() {
-        return DEFAULT_EXTENSION;
+        return SOURCE_EXTENSION;
     }
+
+    public String getHeaderExtension() { return HEADER_EXTENSION;}
 
     @Nullable
     @Override

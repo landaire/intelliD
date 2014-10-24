@@ -12,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
 public class DFileTypeFactory extends FileTypeFactory {
     @Override
     public void createFileTypes(@NotNull final FileTypeConsumer fileTypeConsumer) {
-        fileTypeConsumer.consume(DFileType.INSTANCE, new ExtensionFileNameMatcher(DFileType.DEFAULT_EXTENSION));
+        fileTypeConsumer.consume(DFileType.INSTANCE,
+                new ExtensionFileNameMatcher(DFileType.SOURCE_EXTENSION),
+                new ExtensionFileNameMatcher(DFileType.HEADER_EXTENSION));
     }
 }
