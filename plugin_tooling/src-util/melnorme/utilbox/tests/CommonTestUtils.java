@@ -14,7 +14,7 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import static melnorme.utilbox.misc.CollectionUtil.createHashSet;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -120,17 +120,14 @@ public class CommonTestUtils {
 	
 	/* ----------------- util constructors ----------------- */
 	
-	@SafeVarargs
 	public static <T> T[] array(T... elems) {
 		return elems;
 	}
 	
-	@SafeVarargs
 	public static <T> List<T> list(T... elems) {
 		return Arrays.asList(elems);
 	}
 	
-	@SafeVarargs
 	public static <T> HashSet<T> hashSet(T... elems) {
 		return new HashSet<T>(Arrays.asList(elems));
 	}
@@ -147,7 +144,7 @@ public class CommonTestUtils {
 		return Collections.unmodifiableCollection(set);
 	}
 	
-	public static Path path(String pathString) {
+	public static File path(String pathString) {
 		return MiscUtil.createPathOrNull(pathString);
 	}
 	
@@ -157,7 +154,7 @@ public class CommonTestUtils {
 	
 	/* -----------------  ----------------- */
 	
-	public static Path workingDirPath(String relativePath) {
+	public static File workingDirPath(String relativePath) {
 		return TestsWorkingDir.getWorkingDirPath(relativePath);
 	}
 	

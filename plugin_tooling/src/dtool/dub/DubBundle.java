@@ -15,13 +15,14 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import static melnorme.utilbox.misc.ArrayUtil.nullToEmpty;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import melnorme.utilbox.misc.CollectionUtil;
+import melnorme.utilbox.misc.FileUtil;
 import melnorme.utilbox.misc.MiscUtil;
+import org.apache.commons.io.FileUtils;
 
 public class DubBundle {
 	
@@ -36,7 +37,7 @@ public class DubBundle {
 	
 	public final String version;
 	public final String[] srcFolders;
-	public final Path[] effectiveSourceFolders;
+	public final File[] effectiveSourceFolders;
 	public final List<BundleFile> bundleFiles;
 	
 	public final DubDependecyRef[] dependencies; // not null
@@ -49,7 +50,7 @@ public class DubBundle {
 			DubBundleException error, 
 			String version, 
 			String[] srcFolders,
-			Path[] effectiveSrcFolders, 
+			File[] effectiveSrcFolders,
 			List<BundleFile> bundleFiles,
 			DubDependecyRef[] dependencies, 
 			String targetName, 
@@ -60,7 +61,7 @@ public class DubBundle {
 		
 		this.version = version == null ? DEFAULT_VERSION : version;
 		this.srcFolders = srcFolders;
-		this.effectiveSourceFolders = nullToEmpty(effectiveSrcFolders, Path.class);
+		this.effectiveSourceFolders = nullToEmpty(effectiveSrcFolders, File.class);
 		this.dependencies = nullToEmpty(dependencies, DubDependecyRef.class);
 		this.bundleFiles = unmodifiableList(CollectionUtil.nullToEmpty(bundleFiles));
 		this.targetName = targetName;
@@ -84,7 +85,7 @@ public class DubBundle {
 		return bundlePath;
 	}
 	
-	public Path getLocation() {
+	public File getLocation() {
 		return bundlePath == null ? null : bundlePath.path;
 	}
 	
@@ -100,11 +101,11 @@ public class DubBundle {
 		return srcFolders;
 	}
 	
-	public Path[] getEffectiveSourceFolders() {
+	public File[] getEffectiveSourceFolders() {
 		return assertNotNull(effectiveSourceFolders);
 	}
 	
-	public Path[] getEffectiveImportFolders() {
+	public File[] getEffectiveImportFolders() {
 		return assertNotNull(effectiveSourceFolders);
 	}
 	
@@ -141,12 +142,12 @@ public class DubBundle {
 		return MiscUtil.OS_IS_WINDOWS ? ".exe" : "";
 	}
 	
-	public Path getEffectiveTargetFullPath() {
-		Path path = MiscUtil.createPathOrNull(getTargetPath() == null ? "" : getTargetPath());
+	public File getEffectiveTargetFullPath() {
+		File path = MiscUtil.createPathOrNull(getTargetPath() == null ? "" : getTargetPath());
 		if(path == null) {
-			path = Paths.get("");
+			path = FileUtils.getFile("");
 		}
-		return path.resolve(getEffectiveTargetName());
+		return FileUtils.getFile(path, getEffectiveTargetName());
 	}
 	
 	public static class DubDependecyRef {
@@ -189,21 +190,21 @@ public class DubBundle {
 	
 	/* ----------------- utilities ----------------- */
 	
-	public ArrayList<Path> getEffectiveImportFolders_AbsolutePath() {
+	public ArrayList<File> getEffectiveImportFolders_AbsolutePath() {
 		assertTrue(bundlePath != null);
 		
-		ArrayList<Path> importFolders = new ArrayList<>(effectiveSourceFolders.length);
-		for (Path srcFolder : effectiveSourceFolders) {
-			importFolders.add(bundlePath.resolve(srcFolder));
+		ArrayList<File> importFolders = new ArrayList<File>(effectiveSourceFolders.length);
+		for (File srcFolder : effectiveSourceFolders) {
+			importFolders.add(bundlePath.resolve(srcFolder.getName()));
 		}
 		return importFolders;
 	}
 	
-	public Path relativizePathToImportFolder(Path path) {
-		ArrayList<Path> importFolders = getEffectiveImportFolders_AbsolutePath();
-		for(Path importFolderPath : importFolders) {
-			if(path.startsWith(importFolderPath)) {
-				return importFolderPath.relativize(path);
+	public File relativizePathToImportFolder(File path) {
+		ArrayList<File> importFolders = getEffectiveImportFolders_AbsolutePath();
+		for(File importFolderPath : importFolders) {
+			if(path.getPath().startsWith(importFolderPath.getPath())) {
+				return new File(importFolderPath.toURI().relativize(path.toURI()));
 			}
 		}
 		return null;

@@ -13,7 +13,7 @@ package dtool.engine.compiler_installs;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import static melnorme.utilbox.core.CoreUtil.areEqual;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,25 +25,25 @@ public class CompilerInstall {
 		DMD, GDC, LDC, OTHER
 	}
 	
-	protected final Path compilerPath;
+	protected final File compilerPath;
 	protected final ECompilerType compilerType;
-	protected final List<Path> librarySourceFolders;
+	protected final List<File> librarySourceFolders;
 	
 	
-	public CompilerInstall(Path compilerPath, ECompilerType compilerType, Path... librarySourceFolders) {
+	public CompilerInstall(File compilerPath, ECompilerType compilerType, File... librarySourceFolders) {
 		this(compilerPath, compilerType, NewUtils.normalizePaths(librarySourceFolders));
 	}
 	
-	public CompilerInstall(Path compilerPath, ECompilerType compilerType, List<Path> librarySourceFolders) {
-		this.compilerPath = compilerPath.normalize();
+	public CompilerInstall(File compilerPath, ECompilerType compilerType, List<File> librarySourceFolders) {
+		this.compilerPath = new File(compilerPath.toURI().normalize());
 		this.compilerType = compilerType;
 		this.librarySourceFolders = Collections.unmodifiableList(librarySourceFolders);
-		for (Path path : librarySourceFolders) {
-			assertTrue(path.isAbsolute() && path.equals(path.normalize()));
+		for (File path : librarySourceFolders) {
+			assertTrue(path.isAbsolute() && path.equals(new File(path.toURI().normalize())));
 		}
 	}
 	
-	public Path getCompilerPath() {
+	public File getCompilerPath() {
 		return compilerPath;
 	}
 	
@@ -51,7 +51,7 @@ public class CompilerInstall {
 		return compilerType;
 	}
 	
-	public List<Path> getLibrarySourceFolders() {
+	public List<File> getLibrarySourceFolders() {
 		return librarySourceFolders;
 	}
 	

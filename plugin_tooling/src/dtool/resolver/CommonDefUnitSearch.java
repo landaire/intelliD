@@ -36,7 +36,7 @@ public abstract class CommonDefUnitSearch {
 	
 	public CommonDefUnitSearch(Module refOriginModule, int refOffset, boolean findOneOnly, 
 		IModuleResolver moduleResolver) { 
-		this.searchedScopes = new ArrayList<>(4);
+		this.searchedScopes = new ArrayList<IScopeProvider>(4);
 		this.refOffset = refOffset;
 		this.findOnlyOne = findOneOnly;
 		this.modResolver = assertNotNull(moduleResolver);

@@ -10,11 +10,12 @@
  *******************************************************************************/
 package melnorme.utilbox.tests;
 
+import org.apache.commons.io.FileUtils;
+
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 
 import java.io.File;
-import java.nio.file.Path;
 
 public class TestsWorkingDir {
 	
@@ -44,8 +45,8 @@ public class TestsWorkingDir {
 		return file;
 	}
 	
-	public static Path getWorkingDirPath() {
-		return getWorkingDir().toPath();
+	public static File getWorkingDirPath() {
+		return getWorkingDir();
 	}
 	
 	protected static void defaultWorkingDirInit() {
@@ -61,8 +62,8 @@ public class TestsWorkingDir {
 		}
 	}
 	
-	public static Path getWorkingDirPath(String relativePath) {
-		return getWorkingDirPath().resolve(relativePath);
+	public static File getWorkingDirPath(String relativePath) {
+		return FileUtils.getFile(getWorkingDirPath(), relativePath);
 	}
 	
 }

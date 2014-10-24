@@ -40,7 +40,7 @@ public class IteratorUtil {
 	
 	/** @return the iterator for given iterable, or an empty {@link Iterator} if iterable is null */
 	public static <E> Iterator<E> nonNullIterator(Iterable<E> iterable) {
-		return iterable == null ? Collections.<E>emptyIterator() : iterable.iterator();
+		return iterable == null ? IteratorUtil.<E>emptyIterator() : iterable.iterator();
 	}
 	
 	/** @return the given iterable, or an empty {@link Iterable} if given iterable is null */
@@ -49,7 +49,6 @@ public class IteratorUtil {
 	}
 	
 	/** @return an {@link Iterable} for given array. A null array is treated as if it's an empty one. */
-	@SafeVarargs
 	public static <E> Iterable<E> iterable(E... array) {
 		if(array == null) {
 			return Collections.EMPTY_LIST;

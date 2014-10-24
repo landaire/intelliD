@@ -15,12 +15,10 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import static melnorme.utilbox.misc.StreamUtil.readAllBytesFromStream;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -75,7 +73,6 @@ public class MiscUtil {
 	
 	/** Returns the first element of objs array that is not null.
 	 * At least one element must be non-null. */
-	@SafeVarargs
 	public static <T> T firstNonNull(T... objs) {
 		for (int i = 0; i < objs.length; i++) {
 			if(objs[i] != null)
@@ -116,40 +113,47 @@ public class MiscUtil {
 	
 	/** @return a valid path, 
 	 * or null if a valid path could not be created from given pathString. */
-	public static Path createPathOrNull(String pathString) {
-		try {
-			return Paths.get(pathString);
-		} catch (InvalidPathException ipe) {
+	public static File createPathOrNull(String pathString) {
+
+		File f = new File(pathString);
+
+		if (!f.exists()) {
 			return null;
 		}
+
+		return f;
 	}
 	
 	/** @return a valid path. Given pathString must represent a valid path. */
-	public static Path createValidPath(String pathString) {
-		try {
-			return Paths.get(pathString);
-		} catch (InvalidPathException ipe) {
-			throw assertFail();
+	public static File createValidPath(String pathString) {
+		File f = new File(pathString);
+
+		if (!f.exists()) {
+			assertFail();
 		}
+
+		return f;
 	}
 	
 	/** @return a valid path, 
 	 * or throws a checked exception if a valid path could not be created from given pathString. */
-	public static Path createPath(String pathString) throws InvalidPathExceptionX {
-		try {
-			return Paths.get(pathString);
-		} catch (InvalidPathException ipe) {
-			throw new InvalidPathExceptionX(ipe);
+	public static File createPath(String pathString) throws InvalidPathExceptionX {
+
+		File f = new File(pathString);
+
+		if (!f.exists()) {
+			throw new InvalidPathExceptionX(f);
 		}
+
+		return f;
 	}
 	
-	/** Checked analogue/wrapper for {@link InvalidPathException} */
 	public static class InvalidPathExceptionX extends Exception {
 		
 		private static final long serialVersionUID = 1L;
 		
-		public InvalidPathExceptionX(InvalidPathException ipe) {
-			super(ipe);
+		public InvalidPathExceptionX(File path) {
+			super(path.getPath());
 		}
 		
 	}

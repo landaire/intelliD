@@ -48,7 +48,7 @@ public abstract class AbstractFunctionDefinition extends CommonDefinition
 		return CoreUtil.blindCast(fnParams);
 	}
 	
-	public static ArrayView<IFunctionParameter> NO_PARAMS = new ArrayView<>(new IFunctionParameter[0]);
+	public static ArrayView<IFunctionParameter> NO_PARAMS = new ArrayView<IFunctionParameter>(new IFunctionParameter[0]);
 	
 	@Override
 	public ArrayView<IFunctionParameter> getParameters() {

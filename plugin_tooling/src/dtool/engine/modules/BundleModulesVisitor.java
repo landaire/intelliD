@@ -10,94 +10,69 @@
  *******************************************************************************/
 package dtool.engine.modules;
 
-import static melnorme.utilbox.core.Assert.AssertNamespace.assertFail;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.io.File;
+import java.util.*;
 
 import dtool.engine.BundleModules;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 
 public abstract class BundleModulesVisitor {
 	
-	protected final HashMap<ModuleFullName, Path> modules = new HashMap<>();
-	protected final HashSet<Path> moduleFiles = new HashSet<>();
-	protected final List<Path> importFolders;
+	protected final HashMap<ModuleFullName, File> modules = new HashMap<ModuleFullName, File>();
+	protected final HashSet<File> moduleFiles = new HashSet<File>();
+	protected final List<File> importFolders;
 	
-	public BundleModulesVisitor(List<Path> importFolders) {
+	public BundleModulesVisitor(List<File> importFolders) {
 		this.importFolders = importFolders;
 		visitBundleModules(importFolders);
 	}
 	
-	public void visitBundleModules(List<Path> importFolders) {
-		for (Path importFolder : importFolders) {
-			try {
-				visitImportFolder(importFolder);
-			} catch (IOException e) {
-				throw assertFail("Should not happen, file visit should not throw exception");
-			}
+	public void visitBundleModules(List<File> importFolders) {
+		for (File importFolder : importFolders) {
+			visitImportFolder(importFolder, importFolder);
 		}
 	}
 	
-	protected void visitImportFolder(final Path importFolder) throws IOException {
-		if(!importFolder.toFile().exists()) {
+	protected void visitImportFolder(final File importFolder, final File rootImportFolder) {
+		if(!importFolder.exists()) {
 			return;
 		}
-		Files.walkFileTree(importFolder, new SimpleFileVisitor<Path>() {
-			@Override
-			public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-				if(dir == importFolder) {
-					return FileVisitResult.CONTINUE;
+
+
+		Collection<File> files = FileUtils.listFilesAndDirs(importFolder, TrueFileFilter.INSTANCE, null);
+
+		for (File currentFile : files) {
+			// If the current file is a directory and is a potential package name, walk that too
+			if (currentFile.isDirectory()) {
+				if (ModuleNamingRules.isValidPackageNameSegment(currentFile.getName())) {
+					visitPotentialModuleFile(currentFile, rootImportFolder);
 				}
-				
-				assertTrue(dir.startsWith(importFolder));
-				Path relPath = importFolder.relativize(dir);
-				if(ModuleNamingRules.isValidPackageNameSegment(relPath.getFileName().toString())) {
-					return FileVisitResult.CONTINUE;
-				}
-				return FileVisitResult.SKIP_SUBTREE;
+
+				continue;
 			}
-			
-			@Override
-			public FileVisitResult visitFile(Path filePath, BasicFileAttributes attrs) throws IOException {
-				visitPotentialModuleFile(filePath, importFolder);
-				
-				return FileVisitResult.CONTINUE;
-			}
-			
-			@Override
-			public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
-				return handleFileVisitException(file, exc);
-			}
-			
-		});
-	}
-	
-	protected void visitPotentialModuleFile(Path fullPath, Path importFolder) {
-		assertTrue(fullPath.isAbsolute());
-		Path relPath = importFolder.relativize(fullPath);
-		ModuleFullName moduleFullName = ModuleNamingRules.getValidModuleNameOrNull(relPath);
-		if(moduleFullName != null) {
-			assertTrue(fullPath.isAbsolute());
-			addModuleEntry(moduleFullName, fullPath);
+
+			visitPotentialModuleFile(currentFile, rootImportFolder);
 		}
 	}
 	
-	protected abstract FileVisitResult handleFileVisitException(Path file, IOException exc);
-	
-	protected void addModuleEntry(ModuleFullName moduleFullName, Path fullPath) {
+	protected void visitPotentialModuleFile(File potentialFile, File importFolder) {
+		String relPath = importFolder.toURI().relativize(potentialFile.toURI()).getPath();
+		ModuleFullName moduleFullName = ModuleNamingRules.getValidModuleNameOrNull(relPath);
+		if(moduleFullName != null) {
+			assertTrue(potentialFile.isAbsolute());
+			addModuleEntry(moduleFullName, potentialFile);
+		}
+	}
+
+	protected void addModuleEntry(ModuleFullName moduleFullName, File fullPath) {
 		modules.put(moduleFullName, fullPath);
 		moduleFiles.add(fullPath);
 	}
 	
-	public HashSet<Path> getModuleFiles() {
+	public HashSet<File> getModuleFiles() {
 		return moduleFiles;
 	}
 	

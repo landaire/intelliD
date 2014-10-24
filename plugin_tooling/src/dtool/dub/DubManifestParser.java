@@ -16,7 +16,6 @@ import static melnorme.utilbox.misc.MiscUtil.createPath;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +69,7 @@ public class DubManifestParser extends CommonDubParser {
 	}
 	
 	protected void parseFromLocation(BundlePath bundlePath) throws DubBundleException {
-		File jsonLocation = bundlePath.getManifestFilePath().toFile();
+		File jsonLocation = bundlePath.getManifestFilePath();
 		
 		try {
 			source = readStringFromFile(jsonLocation);
@@ -97,7 +96,7 @@ public class DubManifestParser extends CommonDubParser {
 				}
 			}
 		}
-		Path[] effectiveSourceFolders;
+		File[] effectiveSourceFolders;
 		if(sourceFolders != null) {
 			effectiveSourceFolders = createPaths(sourceFolders);
 		} else if(searchImplicitSourceFolders && bundlePath != null) {
@@ -112,11 +111,11 @@ public class DubManifestParser extends CommonDubParser {
 			dependencies, targetName, targetPath);
 	}
 	
-	protected Path[] createPaths(String[] paths) {
+	protected File[] createPaths(String[] paths) {
 		if(paths == null) 
 			return null;
 		
-		ArrayList<Path> pathArray = new ArrayList<>();
+		ArrayList<File> pathArray = new ArrayList<File>();
 		for (String pathString : paths) {
 			try {
 				pathArray.add(createPath(pathString));
@@ -125,21 +124,21 @@ public class DubManifestParser extends CommonDubParser {
 			}
 		}
 		
-		return ArrayUtil.createFrom(pathArray, Path.class);
+		return ArrayUtil.createFrom(pathArray, File.class);
 	}
 	
-	protected Path[] searchImplicitSrcFolders(Path location) {
+	protected File[] searchImplicitSrcFolders(File location) {
 		if(location == null) {
-			return new Path[0];
+			return new File[0];
 		}
-		File locationDir = location.toFile();
-		if(!locationDir.isDirectory()) {
+
+		if(!location.isDirectory()) {
 			putError("location is not a directory");
-			return new Path[0];
+			return new File[0];
 		}
 		
-		final ArrayList<Path> implicitFolders = new ArrayList<>();
-		locationDir.listFiles(new FilenameFilter() {
+		final ArrayList<File> implicitFolders = new ArrayList<File>();
+		location.listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
 				if(dir.isDirectory() && (name.equals("src") || name.equals("source"))) {
@@ -149,7 +148,7 @@ public class DubManifestParser extends CommonDubParser {
 			}
 		});
 		
-		return ArrayUtil.createFrom(implicitFolders, Path.class);
+		return ArrayUtil.createFrom(implicitFolders, File.class);
 	}
 	
 	@Override
@@ -203,7 +202,7 @@ public class DubManifestParser extends CommonDubParser {
 	protected ArrayList<BundleFile> parseFiles(JsonReaderExt jsonReader) throws IOException {
 		jsonReader.consumeExpected(JsonToken.BEGIN_ARRAY);
 		
-		ArrayList<BundleFile> bundleFiles = new ArrayList<>();
+		ArrayList<BundleFile> bundleFiles = new ArrayList<BundleFile>();
 		
 		while(jsonReader.hasNext()) {
 			BundleFile bundleFile = parseFile(jsonReader);
@@ -221,18 +220,16 @@ public class DubManifestParser extends CommonDubParser {
 		
 		while(jsonReader.hasNext()) {
 			String propName = jsonReader.consumeExpectedPropName();
-			
-			switch(propName) {
-			case "path":
+
+			if (propName.equals("path")) {
 				path = jsonReader.consumeStringValue();
-				break;
-			case "type":
-				//TODO
-				
-			default:
+			} else if (propName.equals("type")) {
+				// TODO
+			} else {
 				jsonReader.skipValue();
 			}
 		}
+
 		jsonReader.consumeExpected(JsonToken.END_OBJECT);
 		if(path == null) {
 			path = "<missing_path>";
@@ -263,7 +260,7 @@ public class DubManifestParser extends CommonDubParser {
 		public DubDependecyRef[] parseRawDeps() throws IOException, MalformedJsonException {
 			jsonReader.consumeExpected(JsonToken.BEGIN_OBJECT);
 			
-			ArrayList<DubDependecyRef> deps = new ArrayList<>();
+			ArrayList<DubDependecyRef> deps = new ArrayList<DubDependecyRef>();
 			
 			while(jsonReader.hasNext()) {
 				String depName = jsonReader.consumeExpectedPropName();
@@ -278,7 +275,7 @@ public class DubManifestParser extends CommonDubParser {
 		public DubDependecyRef[] parseResolvedDeps() throws IOException, MalformedJsonException {
 			jsonReader.consumeExpected(JsonToken.BEGIN_ARRAY);
 			
-			ArrayList<DubDependecyRef> deps = new ArrayList<>();
+			ArrayList<DubDependecyRef> deps = new ArrayList<DubDependecyRef>();
 			
 			while(jsonReader.hasNext()) {
 				String depName = jsonReader.nextString();

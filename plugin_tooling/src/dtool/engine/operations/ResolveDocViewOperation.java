@@ -10,7 +10,7 @@
  *******************************************************************************/
 package dtool.engine.operations;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.concurrent.ExecutionException;
 
 import dtool.ast.ASTNode;
@@ -35,10 +35,10 @@ import dtool.engine.modules.IModuleResolver;
 
 public class ResolveDocViewOperation extends AbstractDToolOperation {
 	
-	protected final Path filePath;
+	protected final File filePath;
 	protected final int offset;
 	
-	public ResolveDocViewOperation(SemanticManager semanticManager, Path filePath, int offset) {
+	public ResolveDocViewOperation(SemanticManager semanticManager, File filePath, int offset) {
 		super(semanticManager);
 		this.filePath = filePath;
 		this.offset = offset;

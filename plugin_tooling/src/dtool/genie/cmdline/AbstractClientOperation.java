@@ -89,28 +89,30 @@ public abstract class AbstractClientOperation extends AbstractCmdlineOperation {
 		} catch (IOException ioe) {
 			throw errorBail("Error opening connection on port " + portNumber + ".", ioe);
 		}
-		
-		try (
+
+		try {
 			OutputStreamWriter serverInput = new OutputStreamWriter(socket.getOutputStream(), UTF8);
 			BufferedReader serverOutput = new BufferedReader(new InputStreamReader(socket.getInputStream(), UTF8));
-		) {
 			
 			InputStoringReader<StringWriter> serverOutStoringReader = InputStoringReader.createDefault(serverOutput);
-			
-			try(
-				JsonWriterExt jsonWriter = new JsonWriterExt(serverInput);
-				JsonReaderExt jsonReader = new JsonReaderExt(serverOutStoringReader);
-			) {
-				
-				jsonWriter.setLenient(true);
-				jsonReader.setLenient(true);
-				
-				writeRequest(jsonWriter);
-				
-				jsonReader.skipValue();
-				String responseString = serverOutStoringReader.getStoredInput().toString();
-				return responseString;
-			}
+
+			JsonWriterExt jsonWriter = new JsonWriterExt(serverInput);
+			JsonReaderExt jsonReader = new JsonReaderExt(serverOutStoringReader);
+
+			jsonWriter.setLenient(true);
+			jsonReader.setLenient(true);
+
+			writeRequest(jsonWriter);
+
+			jsonReader.skipValue();
+
+			serverInput.close();
+			serverOutput.close();
+			serverOutStoringReader.close();
+			jsonWriter.close();
+			jsonReader.close();
+
+			return serverOutStoringReader.getStoredInput().toString();
 		} catch (IOException ioe) {
 			throw errorBail("Exception during client request.", ioe);
 		}

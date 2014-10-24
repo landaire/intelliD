@@ -10,12 +10,12 @@
  *******************************************************************************/
 package dtool.engine.util;
 
+import org.apache.commons.io.FileUtils;
+
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.attribute.FileTime;
 
 /**
  * An entry caching some value, derived from a file as input. 
@@ -23,12 +23,12 @@ import java.nio.file.attribute.FileTime;
  */
 public class FileCachingEntry<VALUE> {
 	
-	protected final Path filePath;
+	protected final File filePath;
 	
 	protected volatile VALUE value;
-	protected volatile FileTime valueTimeStamp;
+	protected volatile Long valueTimeStamp;
 	
-	public FileCachingEntry(Path path) {
+	public FileCachingEntry(File path) {
 		this.filePath = path;
 	}
 	
@@ -36,7 +36,7 @@ public class FileCachingEntry<VALUE> {
 		return value;
 	}
 	
-	public FileTime getValueTimeStamp() {
+	public Long getValueTimeStamp() {
 		return valueTimeStamp;
 	}
 	
@@ -45,14 +45,9 @@ public class FileCachingEntry<VALUE> {
 	}
 	
 	public synchronized boolean isStale() {
-		FileTime lastModifiedTime;
-		try {
-			lastModifiedTime = Files.getLastModifiedTime(filePath);
-		} catch (IOException e) {
-			return true;
-		}
-		
-		if(valueTimeStamp == null || valueTimeStamp.toMillis() < lastModifiedTime.toMillis()) {
+		Long lastModifiedTime = filePath.lastModified();
+
+		if(valueTimeStamp == null || valueTimeStamp < lastModifiedTime) {
 			return true;
 		}
 		return false;
@@ -62,22 +57,20 @@ public class FileCachingEntry<VALUE> {
 		updateValue(value, null);
 	}
 	
-	public void updateValue(VALUE value, FileTime newTimeStampMaximum) {
+	public void updateValue(VALUE value, Long newTimeStampMaximum) {
 		assertNotNull(newTimeStampMaximum);
 		
-		FileTime newValueTimeStamp;
-		try {
-			newValueTimeStamp = Files.getLastModifiedTime(filePath);
-		} catch (IOException e) {
-			newValueTimeStamp = FileTime.fromMillis(0);
-		}
+		Long newValueTimeStamp;
+
+		newValueTimeStamp = filePath.lastModified();
+
 		if(newTimeStampMaximum != null && newTimeStampMaximum.compareTo(newValueTimeStamp) < 0) {
 			newValueTimeStamp = newTimeStampMaximum;
 		}
 		internalSetValue(value, newValueTimeStamp);
 	}
 	
-	protected synchronized void internalSetValue(VALUE value, FileTime newTimeStamp) {
+	protected synchronized void internalSetValue(VALUE value, Long newTimeStamp) {
 		this.value = value;
 		this.valueTimeStamp = newTimeStamp;
 	}

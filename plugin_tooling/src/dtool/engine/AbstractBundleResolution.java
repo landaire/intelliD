@@ -11,7 +11,7 @@
 package dtool.engine;
 
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +32,7 @@ public abstract class AbstractBundleResolution implements IBundleResolution {
 	protected final SemanticManager manager;
 	protected final BundleModules bundleModules;
 	
-	public AbstractBundleResolution(SemanticManager manager, List<Path> importFolders) {
+	public AbstractBundleResolution(SemanticManager manager, List<File> importFolders) {
 		this(manager, manager.new SM_BundleModulesVisitor(importFolders).toBundleModules());
 	}
 	
@@ -42,12 +42,12 @@ public abstract class AbstractBundleResolution implements IBundleResolution {
 	}
 	
 	
-	public Set<Path> getBundleModuleFiles() {
+	public Set<File> getBundleModuleFiles() {
 		return bundleModules.moduleFiles;
 	}
 	
 	/** @return the absolute path of a module contained in this bundle resolution. */
-	protected Path getBundleModulePath(ModuleFullName moduleFullName) {
+	protected File getBundleModulePath(ModuleFullName moduleFullName) {
 		return bundleModules.getModuleAbsolutePath(moduleFullName);
 	}
 	
@@ -72,10 +72,10 @@ public abstract class AbstractBundleResolution implements IBundleResolution {
 	}
 	
 	public boolean checkIsModuleListStale() {
-		List<Path> importFolders = bundleModules.importFolders;
+		List<File> importFolders = bundleModules.importFolders;
 		BundleModulesVisitor modulesVisitor = manager.new SM_BundleModulesVisitor(importFolders) {
 			@Override
-			protected void addModuleEntry(ModuleFullName moduleFullName, Path fullPath) {
+			protected void addModuleEntry(ModuleFullName moduleFullName, File fullPath) {
 				moduleFiles.add(fullPath);
 			}
 		};
@@ -85,13 +85,13 @@ public abstract class AbstractBundleResolution implements IBundleResolution {
 	/* -----------------  ----------------- */
 	
 	// TODO: proper synchronization - for now assume no concurrent acesss to resolve operations 
-	protected final Map<Path, ResolvedModule> resolvedModules = new HashMap<>();
+	protected final Map<File, ResolvedModule> resolvedModules = new HashMap<File, ResolvedModule>();
 	
 	public synchronized boolean checkIsModuleContentsStale() {
 		ModuleParseCache parseCache = manager.parseCache;
 		
-		for (Entry<Path, ResolvedModule> entry : resolvedModules.entrySet()) {
-			Path path = entry.getKey();
+		for (Entry<File, ResolvedModule> entry : resolvedModules.entrySet()) {
+			File path = entry.getKey();
 			ResolvedModule currentModule = entry.getValue();
 			
 			ParsedModule parsedModule = parseCache.getEntry(path).getParsedModuleIfNotStale(true);
@@ -111,11 +111,11 @@ public abstract class AbstractBundleResolution implements IBundleResolution {
 	}
 	
 	protected ResolvedModule getBundleResolvedModule(ModuleFullName moduleFullName) throws ParseSourceException {
-		Path modulePath = getBundleModulePath(moduleFullName);
+		File modulePath = getBundleModulePath(moduleFullName);
 		return modulePath == null ? null : getBundleResolvedModule(modulePath);
 	}
 	
-	public synchronized ResolvedModule getBundleResolvedModule(Path filePath) throws ParseSourceException {
+	public synchronized ResolvedModule getBundleResolvedModule(File filePath) throws ParseSourceException {
 		ModuleParseCache parseCache = manager.parseCache;
 		
 		ResolvedModule resolvedModule = resolvedModules.get(filePath);
@@ -152,7 +152,7 @@ public abstract class AbstractBundleResolution implements IBundleResolution {
 			return parsedModule.module;
 		}
 		
-		public Path getModulePath() {
+		public File getModulePath() {
 			return parsedModule.modulePath;
 		}
 		

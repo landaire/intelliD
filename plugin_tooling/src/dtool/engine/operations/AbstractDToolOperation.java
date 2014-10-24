@@ -10,7 +10,7 @@
  *******************************************************************************/
 package dtool.engine.operations;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.concurrent.ExecutionException;
 
 import dtool.engine.AbstractBundleResolution.ResolvedModule;
@@ -28,7 +28,7 @@ public class AbstractDToolOperation {
 		return semanticManager;
 	}
 	
-	protected ResolvedModule getResolvedModule(Path filePath) throws ExecutionException {
+	protected ResolvedModule getResolvedModule(File filePath) throws ExecutionException {
 		return semanticManager.getUpdatedResolvedModule(filePath);
 	}
 	

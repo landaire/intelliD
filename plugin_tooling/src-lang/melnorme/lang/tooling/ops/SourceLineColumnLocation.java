@@ -13,17 +13,17 @@ package melnorme.lang.tooling.ops;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.CoreUtil.areEqual;
 
-import java.nio.file.Path;
-
 import melnorme.utilbox.misc.HashcodeUtil;
+
+import java.io.File;
 
 public class SourceLineColumnLocation {
 	
-	public final Path path;
+	public final File path;
 	public final int line; // 1-based index
 	public final int column; // 1-based index
 	
-	public SourceLineColumnLocation(Path path, int line, int column) {
+	public SourceLineColumnLocation(File path, int line, int column) {
 		this.path = assertNotNull(path);
 		this.line = line;
 		this.column = column;

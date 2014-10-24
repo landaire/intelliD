@@ -95,9 +95,9 @@ public class DubBundleDescription {
 	
 	public static class DubDescribeAnalysis {
 		
-		protected final HashMap<String, DubBundle> bundlesMap = new HashMap<>();
-		protected final HashMap<String, ResolvedManifest> manifests = new HashMap<>();
-		protected final HashSet<String> manifestsBeingCalculated = new HashSet<>();
+		protected final HashMap<String, DubBundle> bundlesMap = new HashMap<String, DubBundle>();
+		protected final HashMap<String, ResolvedManifest> manifests = new HashMap<String, ResolvedManifest>();
+		protected final HashSet<String> manifestsBeingCalculated = new HashSet<String>();
 		public final ResolvedManifest mainManifest;
 		
 		public DubDescribeAnalysis(DubBundleDescription bundleDesc) {
@@ -145,7 +145,7 @@ public class DubBundleDescription {
 		}
 		
 		protected ArrayList<ResolvedManifest> calculateDirectDependencies(DubBundle bundle) {
-			ArrayList<ResolvedManifest> directDeps = new ArrayList<>(bundle.getDependencyRefs().length);
+			ArrayList<ResolvedManifest> directDeps = new ArrayList<ResolvedManifest>(bundle.getDependencyRefs().length);
 			
 			for (DubDependecyRef directDependencyRef : bundle.getDependencyRefs()) {
 				String depName = directDependencyRef.getBundleName();

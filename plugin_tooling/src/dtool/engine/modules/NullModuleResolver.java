@@ -8,7 +8,7 @@ public class NullModuleResolver extends CommonModuleResolver {
 	
 	@Override
 	protected HashSet<String> findModules_do(String fqNamePrefix) {
-		return new HashSet<>();
+		return new HashSet<String>();
 	}
 	
 	@Override

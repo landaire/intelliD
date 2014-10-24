@@ -10,6 +10,9 @@
  *******************************************************************************/
 package melnorme.utilbox.misc;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,19 +21,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
-import java.nio.file.CopyOption;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 
 /**
  * Miscellaneous file utilities.
- * See also: {@link Files} (Some code has been superceded by it).
  */
 public final class FileUtil {
-	
+
+	public static int getNameCount(File file) {
+		String[] tokens = file.getPath().split(File.separator);
+		return tokens.length;
+	}
+
 	/** Read all bytes of the given file. 
 	 * @return the bytes that where read in a {@link ByteArrayOutputStream}. */
 	public static IByteSequence readBytesFromFile(File file) throws IOException, FileNotFoundException {
@@ -56,12 +57,6 @@ public final class FileUtil {
 	 * @return a String created from those bytes, with given charset. */
 	public static String readStringFromFile(File file, Charset charset) throws IOException, FileNotFoundException {
 		return readBytesFromFile(file).toString(charset);
-	}
-	
-	/** Read all bytes from the given file.
-	 * @return a String created from those bytes, with given charset. */
-	public static String readStringFromFile(Path file, Charset charset) throws IOException, FileNotFoundException {
-		return readBytesFromFile(file.toFile()).toString(charset);
 	}
 	
 	
@@ -91,45 +86,38 @@ public final class FileUtil {
 	
 	/* -----------------  ----------------- */
 	
-	public static void copyToDir(Path source, Path targetDir, CopyOption... options) throws IOException {
-		Files.copy(source, targetDir.resolve(source.getFileName()), options);
+	public static boolean deleteIfExists(File path) throws IOException {
+		if (path.exists()) {
+			return path.delete();
+		}
+
+		return false;
 	}
 	
-	public static boolean deleteIfExists(Path path) throws IOException {
-		return Files.deleteIfExists(path);
-	}
-	
-	public static void deleteDirContents(Path dir) throws IOException {
+	public static void deleteDirContents(File dir) throws IOException {
 		deleteDirContents(dir, false);
 	}
 	
 	public static void deleteDir(File dir) throws IOException {
-		deleteDir(dir.toPath());
-	}
-	public static void deleteDir(Path dir) throws IOException {
-		deleteDirContents(dir, true);
+		FileUtils.deleteDirectory(dir);
 	}
 	
-	protected static void deleteDirContents(final Path directory, final boolean deleteDirectory) throws IOException {
-		if(!directory.toFile().exists()) {
+	protected static void deleteDirContents(final File directory, final boolean deleteDirectory) throws IOException {
+		if(!directory.exists()) {
 			return;
 		}
-		
-		Files.walkFileTree(directory, new SimpleFileVisitor<Path>() {
-			@Override
-			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-				Files.deleteIfExists(file);
-				return FileVisitResult.CONTINUE;
+
+		for (File currentFile : FileUtils.listFilesAndDirs(directory, TrueFileFilter.INSTANCE, null)) {
+			if (!currentFile.exists()) {
+				continue;
 			}
-			@Override
-			public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-				if(!dir.equals(directory) || deleteDirectory) {
-					Files.deleteIfExists(dir);
-				}
-				return FileVisitResult.CONTINUE;
+
+			if (currentFile.isDirectory()) {
+				FileUtils.deleteDirectory(currentFile);
+			} else {
+				currentFile.delete();
 			}
-		});
-		
+		}
 	}
 	
 }

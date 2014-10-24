@@ -31,7 +31,6 @@ public class CollectionUtil {
 		return new ArrayList<E>(collection == null ? Collections.EMPTY_LIST : collection);
 	}
 	/** @return a new {@link ArrayList} from given array (a null array is considered like it's an empty one). */
-	@SafeVarargs
 	public static <E> ArrayList<E> createArrayList(E... array) {
 		ArrayList<E> newCollection = new ArrayList<E>();
 		if(array != null) {
@@ -46,7 +45,6 @@ public class CollectionUtil {
 		return new LinkedList<E>(collection == null ? Collections.EMPTY_LIST : collection);
 	}
 	/** @return a new {@link LinkedList} from given array (a null array is considered like it's an empty one). */
-	@SafeVarargs
 	public static <E> LinkedList<E> createLinkedList(E... array) {
 		LinkedList<E> newCollection = new LinkedList<E>();
 		if(array != null) {
@@ -61,7 +59,6 @@ public class CollectionUtil {
 		return new HashSet<E>(collection == null ? Collections.EMPTY_LIST : collection);
 	}
 	/** @return a new {@link HashSet} from given array (a null array is considered like it's an empty one). */
-	@SafeVarargs
 	public static <E> HashSet<E> createHashSet(E... array) {
 		HashSet<E> newCollection = new HashSet<E>();
 		if(array != null) {

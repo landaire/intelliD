@@ -123,7 +123,7 @@ public abstract class DeeParser_Statements extends DeeParser_Definitions {
 		new ParseRuleDescription("StOrBlock", "Statement or Block");
 	
 	protected ArrayView<IStatement> parseStatements(DeeTokens nodeListTerminator, boolean parseCaseDefault) {
-		ArrayList<IStatement> nodeList = new ArrayList<>();
+		ArrayList<IStatement> nodeList = new ArrayList<IStatement>();
 		while(true) {
 			if(lookAhead() == nodeListTerminator) {
 				break;
@@ -465,7 +465,7 @@ public abstract class DeeParser_Statements extends DeeParser_Definitions {
 		parsing: { 
 			if(parse.consumeRequired(DeeTokens.OPEN_PARENS).ruleBroken) break parsing;
 		
-			ArrayList<ForeachVariableDef> varParamsList = new ArrayList<>(2);
+			ArrayList<ForeachVariableDef> varParamsList = new ArrayList<ForeachVariableDef>(2);
 			do {
 				ForeachVariableDef varDef = parseForeachVariableDef();
 				varParamsList.add(varDef);
@@ -550,7 +550,7 @@ public abstract class DeeParser_Statements extends DeeParser_Definitions {
 		ArrayView<Expression> caseValues;
 		ScopedStatementList body = null;
 		parsing: {
-			ArrayList<Expression> caseValuesList = new ArrayList<>(2);
+			ArrayList<Expression> caseValuesList = new ArrayList<Expression>(2);
 			do {
 				Expression varDef = parseAssignExpression_toMissing();
 				caseValuesList.add(varDef);
@@ -691,7 +691,7 @@ public abstract class DeeParser_Statements extends DeeParser_Definitions {
 		ArrayList<IToken> tokenList = null;
 		parsing: { 
 			if(parse.consumeExpected(DeeTokens.OPEN_BRACE) == false) break parsing;
-			tokenList = new ArrayList<>();
+			tokenList = new ArrayList<IToken>();
 			
 			for(int braceDepth = 1; true; ) {
 				if(lookAhead() == DeeTokens.EOF) {
@@ -756,7 +756,7 @@ public abstract class DeeParser_Statements extends DeeParser_Definitions {
 			body = parse.checkResult(parseStatement_toMissing());
 			if(parse.ruleBroken) break parsing;
 			
-			catches = new ArrayList<>();
+			catches = new ArrayList<CatchClause>();
 			while(true) {
 				CatchClause catchClause = parse.checkResult(parseCatchClause());
 				if(catchClause == null) {

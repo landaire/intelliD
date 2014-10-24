@@ -182,14 +182,21 @@ public class ExternalProcessHelper extends AbstractExternalProcessHelper {
 	 * @throws TimeoutException if timeout occurs, or cancel requested.
 	 * @throws IOException if an IO error occured in the reader threads.
 	 */
-	public ExternalProcessResult strictAwaitTermination(int timeoutMs) 
+	public ExternalProcessResult strictAwaitTermination(int timeoutMs)
 			throws InterruptedException, TimeoutException, IOException {
 		try {
 			tryStrictAwaitTermination(timeoutMs);
-		} catch (Exception e) {
+		} catch (InterruptedException e) {
+			process.destroy();
+			throw e;
+		} catch (TimeoutException e) {
+			process.destroy();
+			throw e;
+		} catch (IOException e) {
 			process.destroy();
 			throw e;
 		}
+
 		return new ExternalProcessResult(process.exitValue(), getStdOutBytes(), getStdErrBytes());
 	}
 	

@@ -30,7 +30,7 @@ public abstract class Reference extends Resolvable implements IResolvable {
 	public Collection<INamedElement> resolveTypeOfUnderlyingValue(IModuleResolver mr) {
 		Collection<INamedElement> resolvedElements = findTargetDefElements(mr, false);
 		
-		ArrayList<INamedElement> resolvedTypeForValueContext = new ArrayList<>();
+		ArrayList<INamedElement> resolvedTypeForValueContext = new ArrayList<INamedElement>();
 		for (INamedElement defElement : resolvedElements) {
 			INamedElement resolveTypeForValueContext = defElement.resolveTypeForValueContext(mr);
 			if(resolvedTypeForValueContext != null) {

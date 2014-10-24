@@ -45,7 +45,7 @@ public class DefUnitSearch extends CommonDefUnitSearch {
 	@Override
 	public void addMatch(INamedElement namedElem) {
 		if(namedElements == null)
-			namedElements = new ArrayList<>(4);
+			namedElements = new ArrayList<INamedElement>(4);
 		namedElements.add(namedElem);
 		if(namedElem instanceof PackageNamespace)
 			matchesArePartialDefUnits = true;

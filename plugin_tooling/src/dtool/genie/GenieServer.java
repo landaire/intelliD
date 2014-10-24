@@ -118,14 +118,12 @@ public class GenieServer extends AbstractSocketServer {
 		
 		@Override
 		protected void handleConnectionStream() throws IOException {
-			try(
 				BufferedReader serverInput = new BufferedReader(
 					new InputStreamReader(clientSocket.getInputStream(), StringUtil.UTF8)); 
 				OutputStreamWriter serverResponse = 
 					new OutputStreamWriter(clientSocket.getOutputStream(), StringUtil.UTF8);
 				JsonReaderExt jsonParser = new JsonReaderExt(serverInput);
 				JsonWriterExt jsonWriter = new JsonWriterExt(serverResponse);
-			) {
 				
 				try {
 					jsonParser.setLenient(true);
@@ -138,7 +136,11 @@ public class GenieServer extends AbstractSocketServer {
 					logProtocolMessageError(jsonException);
 					return;
 				}
-			}
+
+			serverInput.close();
+			serverResponse.close();
+			jsonParser.close();
+			jsonWriter.close();
 		}
 		
 	}

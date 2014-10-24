@@ -13,9 +13,9 @@ package dtool.genie.cmdline;
 import static melnorme.utilbox.core.CoreUtil.blindCast;
 import static melnorme.utilbox.core.CoreUtil.nullToEmpty;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,10 +49,10 @@ public class FindDefinitionRequest extends AbstractClientOperation {
 		out.println("  offset    - offset (in Unicode characters) of the reference to resolve.");
 	}
 	
-	protected Path modulePath;
+	protected File modulePath;
 	protected int offset = -1;
 	
-	public FindDefinitionRequest setArguments(Path modulePath, int offset) {
+	public FindDefinitionRequest setArguments(File modulePath, int offset) {
 		this.modulePath = modulePath; this.offset = offset;
 		return this;
 	}
@@ -88,7 +88,7 @@ public class FindDefinitionRequest extends AbstractClientOperation {
 			}
 			
 			List<?> jsonResults = blindCast(response.get("results"));
-			ArrayList<FindDefinitionResultEntry> results = new ArrayList<>();
+			ArrayList<FindDefinitionResultEntry> results = new ArrayList<FindDefinitionResultEntry>();
 			
 			for (Object jsonResultEntry : nullToEmpty(jsonResults)) {
 				results.add(findDefResult(jsonResultEntry));

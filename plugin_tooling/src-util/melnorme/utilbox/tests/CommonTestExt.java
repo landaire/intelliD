@@ -16,8 +16,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -28,6 +26,7 @@ import melnorme.utilbox.misc.FileUtil;
 import melnorme.utilbox.misc.MiscUtil;
 import melnorme.utilbox.misc.StreamUtil;
 import melnorme.utilbox.misc.StringUtil;
+import org.apache.commons.io.FileUtils;
 
 /**
  * Some extended functionality to {@link CommonTestUtils}. 
@@ -43,9 +42,6 @@ public class CommonTestExt extends CommonTest {
 	
 	public static final Charset DEFAULT_TESTDATA_ENCODING = StringUtil.UTF8;
 	
-	public static String readStringFromFile(Path path) {
-		return readStringFromFile(path.toFile());
-	}
 	public static String readStringFromFile(File file) {
 		try {
 			return FileUtil.readStringFromFile(file, DEFAULT_TESTDATA_ENCODING);
@@ -54,9 +50,6 @@ public class CommonTestExt extends CommonTest {
 		}
 	}
 	
-	public static void writeStringToFile(Path file, String string) {
-		writeStringToFile(file.toFile(), string);
-	}
 	public static void writeStringToFile(File file, String string) {
 		try {
 			StreamUtil.writeStringToStream(string, new FileOutputStream(file), DEFAULT_TESTDATA_ENCODING);
@@ -83,7 +76,6 @@ public class CommonTestExt extends CommonTest {
 		void visit(T obj);
 	}
 	
-	@SafeVarargs
 	public static <T, PRED extends Visitor<T>> void visitContainer(Collection<T> coll, PRED... predicates) {
 		Iterator<T> iterator = coll.iterator();
 		assertTrue(coll.size() == predicates.length);
@@ -93,7 +85,6 @@ public class CommonTestExt extends CommonTest {
 		}
 	}
 	
-	@SafeVarargs
 	public static <T, PRED extends Visitor<T>> void visitContainer(T[] coll, PRED... predicates) {
 		assertTrue(coll.length == predicates.length);
 		for (int i = 0; i < coll.length; i++) {
@@ -102,7 +93,7 @@ public class CommonTestExt extends CommonTest {
 		}
 	}
 	
-	public static final Path IGNORE_PATH = Paths.get("###NO_CHECK###");
+	public static final File IGNORE_PATH = FileUtils.getFile("###NO_CHECK###");
 	public static final String IGNORE_STR = "###NO_CHECK###";
 	public static final Object[] IGNORE_ARR = new Object[0];
 	public static final String[] IGNORE_ARR_STR = new String[0];

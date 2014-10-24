@@ -28,7 +28,7 @@ public class LexElementProducer {
 	}
 	
 	public ArrayList<LexElement> produceLexTokens(AbstractLexer lexer) {
-		ArrayList<LexElement> lexElementList = new ArrayList<>();
+		ArrayList<LexElement> lexElementList = new ArrayList<LexElement>();
 		
 		while(true) {
 			LexElement lexElement = produceLexElement(lexer);

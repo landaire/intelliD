@@ -88,7 +88,7 @@ public class DubDescribeParser extends CommonDubParser {
 	protected static ArrayList<DubBundle> readDescribedBundles(JsonReaderExt jsonParser) throws IOException {
 		jsonParser.consumeExpected(JsonToken.BEGIN_ARRAY);
 		
-		ArrayList<DubBundle> bundles = new ArrayList<>();
+		ArrayList<DubBundle> bundles = new ArrayList<DubBundle>();
 		
 		while(jsonParser.hasNext()) {
 			JsonToken tokenType = jsonParser.peek();

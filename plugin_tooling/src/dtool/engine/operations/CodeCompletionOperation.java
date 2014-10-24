@@ -14,7 +14,7 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import static melnorme.utilbox.misc.NumberUtil.isInRange;
 import static melnorme.utilbox.misc.NumberUtil.isInsideRange;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.concurrent.ExecutionException;
 
 import dtool.ast.ASTNode;
@@ -41,7 +41,7 @@ public class CodeCompletionOperation extends AbstractDToolOperation {
 		super(semanticManager);
 	}
 	
-	public CompletionSearchResult doCodeCompletion(Path filePath, int offset, Path compilerPath)
+	public CompletionSearchResult doCodeCompletion(File filePath, int offset, File compilerPath)
 			throws ExecutionException {
 		if(filePath == null) { 
 			throw new ExecutionException(new Exception("Invalid path for content assist source.")); 

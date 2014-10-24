@@ -12,7 +12,7 @@ package dtool.engine.operations;
 
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.List;
 
 import melnorme.lang.tooling.ast.SourceRange;
@@ -41,10 +41,10 @@ public class FindDefinitionResult {
 		
 		public final String extendedName;
 		public final boolean isLanguageIntrinsic;
-		public final Path modulePath;
+		public final File modulePath;
 		public final SourceRange sourceRange;
 		
-		public FindDefinitionResultEntry(String extendedName, boolean isLanguageIntrinsic, Path compilationUnitPath, 
+		public FindDefinitionResultEntry(String extendedName, boolean isLanguageIntrinsic, File compilationUnitPath,
 				SourceRange sourceRange) {
 			this.extendedName = assertNotNull(extendedName);
 			this.isLanguageIntrinsic = isLanguageIntrinsic;

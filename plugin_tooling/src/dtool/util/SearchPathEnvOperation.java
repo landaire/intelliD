@@ -10,7 +10,7 @@
  *******************************************************************************/
 package dtool.util;
 
-import java.nio.file.Path;
+import java.io.File;
 
 import melnorme.utilbox.misc.MiscUtil;
 
@@ -44,12 +44,12 @@ public abstract class SearchPathEnvOperation {
 	protected void searchPaths(String[] paths, String envVarName) {
 		for (String pathString : paths) {
 			
-			Path path = MiscUtil.createPathOrNull(pathString);
+			File path = MiscUtil.createPathOrNull(pathString);
 			if(path == null) {
 				handleWarning("Invalid path: " + pathString + " in env variable: " + envVarName);
 				continue;
 			}
-			if(!path.toFile().isDirectory()) {
+			if(!path.isDirectory()) {
 				continue;
 			}
 			searchPathEntry(path);
@@ -58,6 +58,6 @@ public abstract class SearchPathEnvOperation {
 	
 	protected abstract void handleWarning(String message);
 	
-	protected abstract void searchPathEntry(Path path);
+	protected abstract void searchPathEntry(File path);
 	
 }

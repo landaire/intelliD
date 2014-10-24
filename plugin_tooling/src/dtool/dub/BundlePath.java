@@ -14,10 +14,12 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import static melnorme.utilbox.core.CoreUtil.areEqual;
 
-import java.nio.file.Path;
-
+import melnorme.utilbox.misc.FileUtil;
 import melnorme.utilbox.misc.MiscUtil;
 import melnorme.utilbox.misc.MiscUtil.InvalidPathExceptionX;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
 
 /**
  * A valid directory path for a dub bundle.
@@ -29,32 +31,32 @@ public class BundlePath {
 	
 	public static BundlePath create(String pathStr) {
 		try {
-			Path path = MiscUtil.createPath(pathStr);
+			File path = MiscUtil.createPath(pathStr);
 			return BundlePath.create(path);
 		} catch (InvalidPathExceptionX e) {
 			return null;
 		}
 	}
 	
-	public static BundlePath create(Path path) {
+	public static BundlePath create(File path) {
 		if(isValidBundlePath(path)) {
 			return new BundlePath(path);
 		}
 		return null;
 	}
 	
-	public static boolean isValidBundlePath(Path path) {
+	public static boolean isValidBundlePath(File path) {
 		assertNotNull(path);
-		return path.isAbsolute() && path.getNameCount() > 0;
+		return path.isAbsolute() && FileUtil.getNameCount(path) > 0;
 	}
 	
 	/* -----------------  ----------------- */
 	
-	public final Path path;
+	public final File path;
 	
-	public BundlePath(Path path) {
+	public BundlePath(File path) {
 		assertTrue(BundlePath.isValidBundlePath(path));
-		this.path = path.normalize();
+		this.path = new File(path.toURI().normalize());
 	}
 	
 	@Override
@@ -72,16 +74,16 @@ public class BundlePath {
 		return path.hashCode();
 	}
 	
-	public Path getManifestFilePath() {
-		return path.resolve(DUB_MANIFEST_FILENAME);
+	public File getManifestFilePath() {
+		return FileUtils.getFile(path, DUB_MANIFEST_FILENAME);
 	}
 	
-	public Path resolve(Path other) {
-		return path.resolve(other);
-	}
+//	public File resolve(File other) {
+//		return path.resolve(other);
+//	}
 	
-	public Path resolve(String other) {
-		return path.resolve(other);
+	public File resolve(String other) {
+		return FileUtils.getFile(path, other);
 	}
 	
 	@Override
@@ -92,15 +94,15 @@ public class BundlePath {
 	/***
 	 * Searches for a manifest file in any of the directories denoted by given path, starting in path. 
 	 */
-	public static BundlePath findBundleForPath(Path path) {
+	public static BundlePath findBundleForPath(File path) {
 		if(path == null || !path.isAbsolute()) {
 			return null;
 		}
-		BundlePath bundlePath = create(path);
-		if(bundlePath != null && bundlePath.getManifestFilePath().toFile().exists()) {
-			return bundlePath;
+		BundlePath bundleFile = create(path);
+		if(bundleFile != null && bundleFile.getManifestFilePath().exists()) {
+			return bundleFile;
 		}
-		return findBundleForPath(path.getParent());
+		return findBundleForPath(path.getParentFile());
 	}
 	
 }

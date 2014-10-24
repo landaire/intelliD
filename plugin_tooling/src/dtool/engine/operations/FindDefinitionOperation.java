@@ -12,7 +12,7 @@ package dtool.engine.operations;
 
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertEquals;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -51,7 +51,7 @@ public class FindDefinitionOperation extends AbstractDToolOperation {
 		super(semanticManager);
 	}
 	
-	public FindDefinitionResult findDefinition(Path filePath, final int offset) {
+	public FindDefinitionResult findDefinition(File filePath, final int offset) {
 		if(filePath == null) {
 			return new FindDefinitionResult("Invalid path for file: " );
 		}
@@ -107,11 +107,11 @@ public class FindDefinitionOperation extends AbstractDToolOperation {
 			return new FindDefinitionResult(FIND_DEF_ReferenceResolveFailed + ref.toStringAsCode());
 		}
 		
-		List<FindDefinitionResultEntry> results = new ArrayList<>();
+		List<FindDefinitionResultEntry> results = new ArrayList<FindDefinitionResultEntry>();
 		for (INamedElement namedElement : defElements) {
 			final DefUnit defUnit = namedElement.resolveDefUnit();
 			
-			Path compilationUnitPath = null;
+			File compilationUnitPath = null;
 			SourceRange sourceRange = null;
 			
 			if(defUnit != null) { // This can happen with intrinsic elements 

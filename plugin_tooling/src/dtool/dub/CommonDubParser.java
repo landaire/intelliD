@@ -43,7 +43,8 @@ public abstract class CommonDubParser {
 	}
 	
 	protected void parseFromSource(String source) throws DubBundleException {
-		try(JsonReaderExt jsonParser = new JsonReaderExt(new StringReader(source))) {
+		try {
+			JsonReaderExt jsonParser = new JsonReaderExt(new StringReader(source));
 			jsonParser.setLenient(true);
 			
 			readData(jsonParser);

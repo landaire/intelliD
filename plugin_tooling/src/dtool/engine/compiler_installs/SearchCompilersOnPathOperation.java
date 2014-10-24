@@ -10,19 +10,20 @@
  *******************************************************************************/
 package dtool.engine.compiler_installs;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import dtool.engine.StandardLibraryResolution.MissingStandardLibraryResolution;
 import dtool.util.SearchPathEnvOperation;
+import org.apache.commons.io.FileUtils;
 
 public abstract class SearchCompilersOnPathOperation extends SearchPathEnvOperation {
 	
 	public static final String DUB_COMPILERS_PATH__ENV_VAR = "DUB_COMPILERS_PATH";
 	
 	protected final CompilerInstallDetector detector = new CompilerInstallDetector();
-	protected final List<CompilerInstall> foundInstalls = new ArrayList<>();
+	protected final List<CompilerInstall> foundInstalls = new ArrayList<CompilerInstall>();
 	
 	public SearchCompilersOnPathOperation searchForCompilersInDefaultPathEnvVars() {
 		searchEnvironmentVar(DUB_COMPILERS_PATH__ENV_VAR);
@@ -31,8 +32,8 @@ public abstract class SearchCompilersOnPathOperation extends SearchPathEnvOperat
 	}
 	
 	@Override
-	protected void searchPathEntry(Path pathEntry) {
-		Path exePath;
+	protected void searchPathEntry(File pathEntry) {
+		File exePath;
 		if((exePath = executableExists(pathEntry, "dmd")) != null) {
 			addPossibleInstall(detector.detectDMDInstall(exePath));
 		}
@@ -51,12 +52,12 @@ public abstract class SearchCompilersOnPathOperation extends SearchPathEnvOperat
 		}
 	}
 	
-	protected Path executableExists(Path pathEntry, String executableFileName) {
-		Path exePath;
-		if((exePath = pathEntry.resolve(executableFileName)).toFile().exists()) {
+	protected File executableExists(File pathEntry, String executableFileName) {
+		File exePath;
+		if((exePath = FileUtils.getFile(pathEntry, executableFileName)).exists()) {
 			return exePath;
 		}
-		if((exePath = pathEntry.resolve(executableFileName + ".exe")).toFile().exists()) {
+		if((exePath = FileUtils.getFile(pathEntry, executableFileName + ".exe")).exists()) {
 			return exePath;
 		}
 		return null;

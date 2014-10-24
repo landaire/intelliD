@@ -13,7 +13,7 @@ package dtool.ast.definitions;
 import static dtool.util.NewUtils.assertCast;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 
-import java.nio.file.Path;
+import java.io.File;
 
 import melnorme.lang.tooling.ast.SourceRange;
 import dtool.ast.ASTCodePrinter;
@@ -100,7 +100,7 @@ public class Module extends DefUnit implements IScopeNode {
 	}
 	
 	public static Module createModuleNoModuleDecl(String moduleName, ArrayView<ASTNode> members,
-			Path compilationUnitPath, SourceRange modRange) {
+			File compilationUnitPath, SourceRange modRange) {
 		ModuleDefSymbol defSymbol = new ModuleDefSymbol(moduleName);
 		defSymbol.setSourceRange(modRange.getStartPos(), 0);
 		return new Module(defSymbol, null, members, compilationUnitPath);
@@ -108,10 +108,10 @@ public class Module extends DefUnit implements IScopeNode {
 	
 	public final DeclarationModule md;
 	public final ArrayView<ASTNode> members;
-	public final Path compilationUnitPath; // can be null. This might be removed in the future.
+	public final File compilationUnitPath; // can be null. This might be removed in the future.
 	
 	public Module(ModuleDefSymbol defSymbol, DeclarationModule md, ArrayView<ASTNode> members, 
-			Path compilationUnitPath) {
+			File compilationUnitPath) {
 		super(defSymbol, false);
 		defSymbol.module = this;
 		this.md = parentize(md);

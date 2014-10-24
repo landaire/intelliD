@@ -155,7 +155,7 @@ public abstract class AbstractParser {
 	
 	/* ----  ---- */
 	
-	protected static final HashMap<String, ParseRuleDescription> parseRules = new HashMap<>(); 
+	protected static final HashMap<String, ParseRuleDescription> parseRules = new HashMap<String, ParseRuleDescription>();
 	
 	// TODO: maybe this should be an enum
 	public static class ParseRuleDescription {
@@ -547,7 +547,7 @@ public abstract class AbstractParser {
 	
 	public static <T extends IASTNode> NodeListView<T> nodeListView(ArrayList<T> list, boolean hasEndingSeparator) {
 		T[] array = ArrayUtil.createFrom(list, CoreUtil.<Class<T>>blindCast(ASTNode.class));
-		return new NodeListView<>(array, hasEndingSeparator);
+		return new NodeListView<T>(array, hasEndingSeparator);
 	}
 	
 	public static boolean lazyInitIsEmpty(ArrayView<?> arrayView) {

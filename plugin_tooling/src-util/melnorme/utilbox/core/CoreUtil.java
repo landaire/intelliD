@@ -89,7 +89,6 @@ public class CoreUtil /* extends Assert */ {
 	/* ----------------- Array and collection core utils ----------------- */
 	
 	/** Shortcut for creating an array of T. */
-	@SafeVarargs
 	public static <T> T[] array(T... elems) {
 		return elems;
 	}
@@ -139,7 +138,6 @@ public class CoreUtil /* extends Assert */ {
 	}
 	
 	/** @return a new read-only {@link List} from given array (a null array is considered like an empty one). */
-	@SafeVarargs
 	public static <T> List<T> listFrom(T... array) {
 		return Collections.unmodifiableList(CollectionUtil.createArrayList(array));
 	}

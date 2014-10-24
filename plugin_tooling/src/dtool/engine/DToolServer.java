@@ -10,7 +10,7 @@
  *******************************************************************************/
 package dtool.engine;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.concurrent.ExecutionException;
 
 import melnorme.utilbox.concurrency.ExecutorTaskAgent;
@@ -61,7 +61,7 @@ public class DToolServer {
 	}
 	
 	
-	protected ResolvedModule getResolvedModule(Path filePath) throws ExecutionException {
+	protected ResolvedModule getResolvedModule(File filePath) throws ExecutionException {
 		return getSemanticManager().getUpdatedResolvedModule(filePath);
 	}
 	
@@ -80,15 +80,15 @@ public class DToolServer {
 	
 	/* ----------------- Operations ----------------- */
 	
-	public FindDefinitionResult doFindDefinition(Path filePath, final int offset) {
+	public FindDefinitionResult doFindDefinition(File filePath, final int offset) {
 		return new FindDefinitionOperation(getSemanticManager()).findDefinition(filePath, offset);
 	}
 	
-	public String getDDocHTMLView(Path filePath, int offset) {
+	public String getDDocHTMLView(File filePath, int offset) {
 		return new ResolveDocViewOperation(getSemanticManager(), filePath, offset).perform();
 	}
 	
-	public CompletionSearchResult doCodeCompletion(Path filePath, int offset, Path compilerPath) 
+	public CompletionSearchResult doCodeCompletion(File filePath, int offset, File compilerPath)
 			throws ExecutionException {
 		return new CodeCompletionOperation(getSemanticManager()).doCodeCompletion(filePath, offset, compilerPath);
 	}

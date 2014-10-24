@@ -12,7 +12,7 @@ package dtool.engine;
 
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -45,7 +45,7 @@ public class BundleResolution extends AbstractBundleResolution implements IModul
 	
 	protected static List<BundleResolution> createDepSRs(SemanticManager manager, ResolvedManifest manifest, 
 		StandardLibraryResolution stdLibResolution) {
-		List<BundleResolution> depSRs = new ArrayList<>();
+		List<BundleResolution> depSRs = new ArrayList<BundleResolution>();
 		for (ResolvedManifest depManifest : manifest.getBundleDeps()) {
 			depSRs.add(new BundleResolution(manager, depManifest, stdLibResolution));
 		}
@@ -72,7 +72,7 @@ public class BundleResolution extends AbstractBundleResolution implements IModul
 		return stdLibResolution;
 	}
 	
-	public Path getCompilerPath() {
+	public File getCompilerPath() {
 		return getStdLibResolution().getCompilerInstall().getCompilerPath();
 	}
 	

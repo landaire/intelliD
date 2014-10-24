@@ -10,7 +10,7 @@
  *******************************************************************************/
 package dtool.engine;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -23,6 +23,7 @@ import dtool.engine.modules.IModuleResolver;
 import dtool.engine.modules.ModuleFullName;
 import dtool.parser.DeeParser;
 import dtool.parser.DeeParserResult.ParsedModule;
+import org.apache.commons.io.FileUtils;
 
 public class StandardLibraryResolution extends AbstractBundleResolution implements IModuleResolver {
 	
@@ -47,13 +48,13 @@ public class StandardLibraryResolution extends AbstractBundleResolution implemen
 		return compilerInstall.getCompilerType();
 	}
 	
-	protected List<Path> getLibrarySourceFolders() {
+	protected List<File> getLibrarySourceFolders() {
 		return compilerInstall.getLibrarySourceFolders();
 	}
 	
 	/* ----------------- synthetic install ----------------- */
 	
-	public static final Path NULL_COMPILER_INSTALL_PATH = 
+	public static final File NULL_COMPILER_INSTALL_PATH =
 			MiscUtil.createValidPath("###DTOOL_SPECIAL###/Synthetic_StdLib");
 	
 	public static final CompilerInstall NULL_COMPILER_INSTALL = new CompilerInstall(
@@ -64,7 +65,7 @@ public class StandardLibraryResolution extends AbstractBundleResolution implemen
 	 */
 	public static class MissingStandardLibraryResolution extends StandardLibraryResolution {
 		
-		protected static final Path objectPath = NULL_COMPILER_INSTALL_PATH.resolve("object.di");
+		protected static final File objectPath = FileUtils.getFile(NULL_COMPILER_INSTALL_PATH, "object.di");
 		protected final BundleModules syntheticBundleModules;
 		
 		public MissingStandardLibraryResolution(SemanticManager manager) {
@@ -78,17 +79,17 @@ public class StandardLibraryResolution extends AbstractBundleResolution implemen
 		}
 		
 		protected static BundleModules createSyntheticBundleModules() {
-			HashMap<ModuleFullName, Path> modules = new HashMap<>();
-			HashSet<Path> moduleFiles = new HashSet<>();
+			HashMap<ModuleFullName, File> modules = new HashMap<ModuleFullName, File>();
+			HashSet<File> moduleFiles = new HashSet<File>();
 			
 			moduleFiles.add(objectPath);
 			modules.put(new ModuleFullName("object"), objectPath);
 			
-			return new BundleModules(modules, moduleFiles, new ArrayList<Path>(), false);
+			return new BundleModules(modules, moduleFiles, new ArrayList<File>(), false);
 		}
 		
 		@Override
-		protected Path getBundleModulePath(ModuleFullName moduleFullName) {
+		protected File getBundleModulePath(ModuleFullName moduleFullName) {
 			return syntheticBundleModules.getModuleAbsolutePath(moduleFullName);
 		}
 		

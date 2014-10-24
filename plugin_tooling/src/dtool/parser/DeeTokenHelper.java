@@ -15,11 +15,11 @@ public class DeeTokenHelper {
 	public static final List<DeeTokens> keyWords_nativeTypes;
 	
 	static {
-		ArrayList<DeeTokens> allKeyWords_init = new ArrayList<>();
+		ArrayList<DeeTokens> allKeyWords_init = new ArrayList<DeeTokens>();
 		
-		ArrayList<DeeTokens> controlKeyWords_init = new ArrayList<>();
-		ArrayList<DeeTokens> literalValueKeyWords_init = new ArrayList<>();
-		ArrayList<DeeTokens> nativeTypeKeyWords_init = new ArrayList<>();
+		ArrayList<DeeTokens> controlKeyWords_init = new ArrayList<DeeTokens>();
+		ArrayList<DeeTokens> literalValueKeyWords_init = new ArrayList<DeeTokens>();
+		ArrayList<DeeTokens> nativeTypeKeyWords_init = new ArrayList<DeeTokens>();
 		
 		for (DeeTokens tokenType : DeeTokens.values()) {
 			if(isKeyword(tokenType)) {

@@ -15,7 +15,7 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertFail;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.ArrayList;
 
 import melnorme.lang.tooling.ast.SourceRange;
@@ -116,7 +116,7 @@ public abstract class DeeParser_Definitions extends DeeParser_Declarations {
 		return docComments;
 	}
 	
-	private static ArrayList<Token> END_DOCCOMMENTS_READ = new SentinelArrayList<>();
+	private static ArrayList<Token> END_DOCCOMMENTS_READ = new SentinelArrayList<Token>();
 	
 	public class DefinitionStartInfo {
 		
@@ -196,7 +196,7 @@ public abstract class DeeParser_Definitions extends DeeParser_Declarations {
 	
 	/* ----------------------------------------------------------------- */
 	
-	public AbstractParser.NodeResult<Module> parseModule(String defaultModuleName, Path compilationUnitPath) {
+	public AbstractParser.NodeResult<Module> parseModule(String defaultModuleName, File compilationUnitPath) {
 		assertNotNull(defaultModuleName);
 		DeclarationModule md = parseModuleDeclaration();
 		
@@ -224,7 +224,7 @@ public abstract class DeeParser_Definitions extends DeeParser_Declarations {
 		DefParseHelper parse = createDefParseHelper(parseDefStartInfo());
 		consumeLookAhead();
 		
-		ArrayList<IToken> packagesList = new ArrayList<>(2);
+		ArrayList<IToken> packagesList = new ArrayList<IToken>(2);
 		BaseLexElement moduleId;
 		
 		while(true) {
@@ -244,7 +244,7 @@ public abstract class DeeParser_Definitions extends DeeParser_Declarations {
 	}
 	
 	public ArrayView<ASTNode> parseDeclarations(DeeTokens nodeListTerminator, boolean consumeCloseBrackets) {
-		ArrayList<ASTNode> declarations = new ArrayList<>();
+		ArrayList<ASTNode> declarations = new ArrayList<ASTNode>();
 		while(true) {
 			if(lookAhead() == nodeListTerminator) {
 				break;
@@ -1183,7 +1183,7 @@ public abstract class DeeParser_Definitions extends DeeParser_Declarations {
 	}
 	
 	protected NodeResult<DefinitionAlias> parseDefinitionAlias_atFragmentStart(DefParseHelper parse) {
-		ArrayList<DefinitionAliasFragment> fragments = new ArrayList<>();
+		ArrayList<DefinitionAliasFragment> fragments = new ArrayList<DefinitionAliasFragment>();
 		
 		while(true) {
 			DefinitionAliasFragment fragment = parseAliasFragment();
@@ -1274,7 +1274,7 @@ public abstract class DeeParser_Definitions extends DeeParser_Declarations {
 	}
 	
 	protected NodeResult<DefinitionEnumVar> parseDefinitionEnumVar_afterId(DefParseHelper parse) {
-		ArrayList<DefinitionEnumVarFragment> fragments = new ArrayList<>();
+		ArrayList<DefinitionEnumVarFragment> fragments = new ArrayList<DefinitionEnumVarFragment>();
 		
 		while(true) {
 			DefinitionEnumVarFragment fragment = parseEnumVarFragment();

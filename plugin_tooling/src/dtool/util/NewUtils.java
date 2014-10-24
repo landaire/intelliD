@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -81,7 +80,6 @@ public class NewUtils {
 		return new ChainedIterator<T>(iter1.iterator(), iter2.iterator());
 	}
 	
-	@SafeVarargs
 	public static <T> T[] assertNotContainsNull_(T... arr) {
 		for (T elem : arr) {
 			Assert.AssertNamespace.assertNotNull(elem);
@@ -178,12 +176,10 @@ public class NewUtils {
 		return str1.compareTo(str2);
 	}
 	
-	@SafeVarargs
 	public static <K, V> HashMap<K, V> newHashMap(Pair<K, V>... entries) {
 		return addEntries(new HashMap<K, V>(), entries);
 	}
 	
-	@SafeVarargs
 	public static <K, V> HashMap<K, V> addEntries(HashMap<K, V> hashMap, Pair<K, V>... entries) {
 		for (Pair<K,V> pair : entries) {
 			hashMap.put(pair.getFirst(), pair.getSecond());
@@ -249,14 +245,14 @@ public class NewUtils {
 	}
 	
 	public static <T> List<T> arrayListFromElement(T element) {
-		ArrayList<T> list = new ArrayList<>();
+		ArrayList<T> list = new ArrayList<T>();
 		list.add(element);
 		return list;
 	}
 	
-	public static ArrayList<Path> normalizePaths(Path... paths) {
+	public static ArrayList<File> normalizePaths(File... paths) {
 		for (int i = 0; i < paths.length; i++) {
-			paths[i] = paths[i].normalize();
+			paths[i] = new File(paths[i].toURI().normalize());
 		}
 		return CollectionUtil.createArrayList(paths);
 	}

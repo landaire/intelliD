@@ -12,7 +12,7 @@ package dtool.engine;
 
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,34 +25,34 @@ import dtool.engine.modules.ModuleFullName;
 
 public class BundleModules {
 	
-	protected final Map<ModuleFullName, Path> modules;
-	protected final Set<Path> moduleFiles;
-	protected final List<Path> importFolders;
+	protected final Map<ModuleFullName, File> modules;
+	protected final Set<File> moduleFiles;
+	protected final List<File> importFolders;
 	
 	/**
 	 * Optimized constructor 
 	 */
-	public BundleModules(HashMap<ModuleFullName, Path> modules, HashSet<Path> moduleFiles, List<Path> importFolders) {
+	public BundleModules(HashMap<ModuleFullName, File> modules, HashSet<File> moduleFiles, List<File> importFolders) {
 		this(modules, moduleFiles, importFolders, true);
 	}
 	
-	public BundleModules(HashMap<ModuleFullName, Path> modules, HashSet<Path> moduleFiles, List<Path> importFolders, 
+	public BundleModules(HashMap<ModuleFullName, File> modules, HashSet<File> moduleFiles, List<File> importFolders,
 			boolean requireAbsolute) {
 		this.modules = Collections.unmodifiableMap(modules);
 		this.moduleFiles = Collections.unmodifiableSet(moduleFiles);
-		this.importFolders = Collections.unmodifiableList(new ArrayList<>(importFolders));
+		this.importFolders = Collections.unmodifiableList(new ArrayList<File>(importFolders));
 		
 		if(requireAbsolute) {
-			for (Path path : moduleFiles) {
+			for (File path : moduleFiles) {
 				assertTrue(path.isAbsolute());
 			}
-			for (Path path : modules.values()) {
+			for (File path : modules.values()) {
 				assertTrue(path.isAbsolute());
 			}
 		}
 	}
 	
-	public Path getModuleAbsolutePath(ModuleFullName moduleFullName) {
+	public File getModuleAbsolutePath(ModuleFullName moduleFullName) {
 		return modules.get(moduleFullName);
 	}
 	
@@ -67,7 +67,7 @@ public class BundleModules {
 	}
 	
 	protected static BundleModules createEmpty() {
-		return new BundleModules(new HashMap<ModuleFullName, Path>(), new HashSet<Path>(), new ArrayList<Path>());
+		return new BundleModules(new HashMap<ModuleFullName, File>(), new HashSet<File>(), new ArrayList<File>());
 	}
 	
 }

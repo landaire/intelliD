@@ -10,7 +10,7 @@
  *******************************************************************************/
 package dtool.genie;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
@@ -18,7 +18,7 @@ import melnorme.utilbox.misc.MiscUtil;
 
 public abstract class ProgramArgumentsHelper {
 	
-	protected final LinkedHashSet<String> parsedArgs = new LinkedHashSet<>();
+	protected final LinkedHashSet<String> parsedArgs = new LinkedHashSet<String>();
 	
 	protected void parseArgs(String[] rawArgs) {
 		for (String arg : rawArgs) {
@@ -73,11 +73,12 @@ public abstract class ProgramArgumentsHelper {
 		}
 	}
 	
-	protected Path parseValidPath(String stringArgument) {
-		Path path = MiscUtil.createPathOrNull(stringArgument);
+	protected File parseValidPath(String stringArgument) {
+		File path = MiscUtil.createPathOrNull(stringArgument);
 		if(path == null) {
 			throw handleArgumentsError("Invalid path : " + stringArgument);
 		}
+
 		return path;
 	}
 	

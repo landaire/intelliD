@@ -2,7 +2,7 @@ package dtool.engine.modules;
 
 import static melnorme.utilbox.core.CoreUtil.array;
 
-import java.nio.file.Path;
+import java.io.File;
 
 import melnorme.utilbox.misc.MiscUtil;
 import melnorme.utilbox.misc.StringUtil;
@@ -30,40 +30,39 @@ public class ModuleNamingRules {
 	
 	/* ----------------- ----------------- */
 	
-	public static ModuleFullName getValidModuleNameOrNull(Path filePath) {
-		int count = filePath.getNameCount();
-		if(count == 0) {
+	public static ModuleFullName getValidModuleNameOrNull(String fileName) {
+		String[] nameSegments = fileName.split(File.separator);
+		int fileElementCount = nameSegments.length;
+		if(fileElementCount == 0) {
 			return null;
 		}
-		
-		String fileName = filePath.getFileName().toString();
+
 		String moduleBaseName = getModuleNameIfValidFileName(fileName, true);
 		if(moduleBaseName == null) {
 			return null;
 		}
 		
 		if(moduleBaseName.equals("package")) {
-			count--;
-			if(count == 0) {
+			fileElementCount--;
+			if(fileElementCount == 0) {
 				return null;
 			}
-			moduleBaseName = filePath.getName(count-1).toString();
+			// TODO: This may be a full path, not the name. See original version
+			moduleBaseName = nameSegments[fileElementCount-1];
 		}
 		if(!DeeLexingUtil.isValidDIdentifier(moduleBaseName)) {
 			return null;
 		}
+
+		nameSegments[fileElementCount - 1] = moduleBaseName;
 		
-		String[] segments = new String[count];
-		segments[count - 1] = moduleBaseName;
-		
-		for (int i = 0; i < count - 1; i++) {
-			segments[i] = filePath.getName(i).toString();
-			if(!isValidPackageNameSegment(segments[i])) {
+		for (int i = 0; i < fileElementCount - 1; i++) {
+			if(!isValidPackageNameSegment(nameSegments[i])) {
 				return null;
 			}
 		}
 		
-		return new ModuleFullName(segments);
+		return new ModuleFullName(nameSegments);
 	}
 	
 	public static boolean isValidCompilationUnitName(String fileName) {
@@ -109,12 +108,12 @@ public class ModuleNamingRules {
 	
 	
 	public static String getModuleFQNameFromFilePath(String packagePath, String fileName) {
-		Path path = MiscUtil.createPathOrNull(packagePath + "/" + fileName);
+		File path = MiscUtil.createPathOrNull(packagePath + "/" + fileName);
 		if(path == null) {
 			return null;
 		}
 		
-		ModuleFullName moduleValidName = getValidModuleNameOrNull(path);
+		ModuleFullName moduleValidName = getValidModuleNameOrNull(path.getPath());
 		return moduleValidName == null ? null : moduleValidName.getFullNameAsString();
 	}
 	

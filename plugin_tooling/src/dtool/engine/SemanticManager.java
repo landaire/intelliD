@@ -12,10 +12,8 @@ package dtool.engine;
 
 import static melnorme.utilbox.core.CoreUtil.areEqual;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Path;
-import java.nio.file.attribute.FileTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -67,7 +65,7 @@ abstract class AbstractSemanticManager {
 		
 		public BundleInfo(BundlePath bundlePath) {
 			this.bundlePath = bundlePath;
-			this.manifestEntry = new FileCachingEntry<>(bundlePath.path);
+			this.manifestEntry = new FileCachingEntry<ResolvedManifest>(bundlePath.path);
 		}
 		
 		public ResolvedManifest getManifest() {
@@ -178,13 +176,13 @@ public class SemanticManager extends AbstractSemanticManager {
 		RunDubDescribeCallable dubDescribeTask = new RunDubDescribeCallable(bundlePath, false);
 		DubBundleDescription bundleDesc = dubDescribeTask.submitAndGet(dubProcessAgent);
 		
-		FileTime dubStartTimeStamp = dubDescribeTask.getStartTimeStamp();
+		Long dubStartTimeStamp = dubDescribeTask.getStartTimeStamp();
 		DubDescribeAnalysis dubDescribeAnalyzer = new DubDescribeAnalysis(bundleDesc);
 		
 		setNewManifestEntry(dubStartTimeStamp, dubDescribeAnalyzer);
 	}
 	
-	protected void setNewManifestEntry(FileTime dubStartTimeStamp, DubDescribeAnalysis dubDescribeAnalyzer) {
+	protected void setNewManifestEntry(Long dubStartTimeStamp, DubDescribeAnalysis dubDescribeAnalyzer) {
 		synchronized(entriesLock) {
 			for(ResolvedManifest newManifestValue : dubDescribeAnalyzer.getAllManifests()) {
 				dtoolServer.logMessage("Resolved new manifest for: " + newManifestValue.bundlePath + 
@@ -210,14 +208,8 @@ public class SemanticManager extends AbstractSemanticManager {
 	}
 	
 	protected class SM_BundleModulesVisitor extends BundleModulesVisitor {
-		public SM_BundleModulesVisitor(List<Path> importFolders) {
+		public SM_BundleModulesVisitor(List<File> importFolders) {
 			super(importFolders);
-		}
-		
-		@Override
-		protected FileVisitResult handleFileVisitException(Path file, IOException exc) {
-			dtoolServer.logError("Error visiting path/director: " + file, exc);
-			return FileVisitResult.CONTINUE;
 		}
 	}
 	
@@ -225,7 +217,7 @@ public class SemanticManager extends AbstractSemanticManager {
 		return getUpdatedResolution(bundlePath, null);
 	}
 	
-	public BundleResolution getUpdatedResolution(BundlePath bundlePath, Path compilerPath) throws ExecutionException {
+	public BundleResolution getUpdatedResolution(BundlePath bundlePath, File compilerPath) throws ExecutionException {
 		BundleInfo info = getInfo(bundlePath);
 		BundleResolution semanticResolution = info.getSemanticResolution();
 		if(info.checkIsResolutionStale() || 
@@ -236,7 +228,7 @@ public class SemanticManager extends AbstractSemanticManager {
 		return semanticResolution;
 	}
 	
-	protected BundleResolution updateSemanticResolutionEntry(BundleInfo staleInfo, Path compilerPath) 
+	protected BundleResolution updateSemanticResolutionEntry(BundleInfo staleInfo, File compilerPath)
 			throws ExecutionException {
 		synchronized(updateOperationLock) {
 			// Recheck stale status after acquiring lock, it might have been updated in the meanwhile.
@@ -275,12 +267,12 @@ public class SemanticManager extends AbstractSemanticManager {
 		}
 	}
 	
-	protected StandardLibraryResolution getUpdatedStdLibResolution(Path compilerPath) {
+	protected StandardLibraryResolution getUpdatedStdLibResolution(File compilerPath) {
 		CompilerInstall foundInstall = getCompilerInstallForNewResolution(compilerPath);
 		return stdLibResolutions.getEntry(foundInstall); // found install can be null
 	}
 	
-	protected CompilerInstall getCompilerInstallForNewResolution(Path compilerPath) {
+	protected CompilerInstall getCompilerInstallForNewResolution(File compilerPath) {
 		if(compilerPath != null) {
 			return new CompilerInstallDetector().detectInstallFromCompilerCommandPath(compilerPath);
 		} else {
@@ -316,19 +308,19 @@ public class SemanticManager extends AbstractSemanticManager {
 	
 	/* ----------------- Working Copy and module resolution ----------------- */
 	
-	public ParsedModule setWorkingCopyAndParse(Path filePath, String source) {
+	public ParsedModule setWorkingCopyAndParse(File filePath, String source) {
 		return parseCache.setWorkingCopyAndGetParsedModule(filePath, source);
 	}
 	
-	public void discardWorkingCopy(Path filePath) {
+	public void discardWorkingCopy(File filePath) {
 		parseCache.discardWorkingCopy(filePath);
 	}
 	
-	public ResolvedModule getUpdatedResolvedModule(Path filePath) throws ExecutionException {
+	public ResolvedModule getUpdatedResolvedModule(File filePath) throws ExecutionException {
 		return getUpdatedResolvedModule(filePath, null);
 	}
 	
-	public ResolvedModule getUpdatedResolvedModule(Path filePath, Path compilerPath) throws ExecutionException {
+	public ResolvedModule getUpdatedResolvedModule(File filePath, File compilerPath) throws ExecutionException {
 		// Keep this enabled for now.
 //		if(!filePath.isAbsolute()) {
 //			throw new ExecutionException(new Exception("Invalid module path"));

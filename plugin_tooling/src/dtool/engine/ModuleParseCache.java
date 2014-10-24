@@ -14,11 +14,9 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 import static melnorme.utilbox.core.CoreUtil.areEqual;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.HashMap;
 
 import melnorme.utilbox.misc.FileUtil;
@@ -26,6 +24,7 @@ import melnorme.utilbox.misc.StringUtil;
 import dtool.ast.definitions.Module;
 import dtool.parser.DeeParser;
 import dtool.parser.DeeParserResult.ParsedModule;
+import org.apache.commons.io.monitor.FileEntry;
 
 /**
  * Manages a cache of parsed modules, indexed by file path
@@ -38,11 +37,11 @@ public class ModuleParseCache {
 		this.dtoolServer = dtoolServer;
 	}
 	
-	protected final HashMap<String, ModuleEntry> cache = new HashMap<>();
+	protected final HashMap<String, ModuleEntry> cache = new HashMap<String, ModuleEntry>();
 	
 	/* -----------------  ----------------- */
 	
-	public ParsedModule getParsedModule(Path filePath) throws ParseSourceException {
+	public ParsedModule getParsedModule(File filePath) throws ParseSourceException {
 		ModuleEntry entry = getEntry(filePath);
 		try {
 			return assertNotNull(entry.getParsedModule());
@@ -51,18 +50,18 @@ public class ModuleParseCache {
 		}
 	}
 	
-	public ParsedModule getExistingParsedModule(Path filePath) {
+	public ParsedModule getExistingParsedModule(File filePath) {
 		// TODO: don't create entry
 		return getEntry(filePath).parsedModule;
 	}
 	
 	// util method
-	public Module getExistingParsedModuleNode(Path filePath) {
+	public Module getExistingParsedModuleNode(File filePath) {
 		ParsedModule parsedModule = getExistingParsedModule(filePath);
 		return parsedModule == null ? null : parsedModule.module;
 	}
 	
-	public ParsedModule setWorkingCopyAndGetParsedModule(Path filePath, String source) {
+	public ParsedModule setWorkingCopyAndGetParsedModule(File filePath, String source) {
 		return parseModuleWithNewSource(filePath, source);
 	}
 	
@@ -80,20 +79,20 @@ public class ModuleParseCache {
 	
 	/* -----------------  ----------------- */
 	
-	protected Path validatePath(Path filePath) {
+	protected File validatePath(File filePath) {
 		assertNotNull(filePath);
 		//filePath can be relative
 		//assertTrue(filePath.isAbsolute());
-		assertTrue(filePath.getNameCount() > 0);
-		filePath = filePath.normalize();
+		assertTrue(FileUtil.getNameCount(filePath) > 0);
+		filePath = new File(filePath.toURI().normalize());
 		return filePath;
 	}
 	
-	protected String getKeyFromPath(Path filePath) {
+	protected String getKeyFromPath(File filePath) {
 		return filePath.toString();
 	}
 	
-	public ModuleEntry getEntry(Path filePath) {
+	public ModuleEntry getEntry(File filePath) {
 		filePath = validatePath(filePath);
 		String key = getKeyFromPath(filePath);
 		
@@ -107,13 +106,13 @@ public class ModuleParseCache {
 		}
 	}
 	
-	protected ParsedModule parseModuleWithNewSource(Path filePath, String source) {
+	protected ParsedModule parseModuleWithNewSource(File filePath, String source) {
 		assertNotNull(source);
 		
 		return getEntry(filePath).getParsedModuleWithWorkingCopySource(source);
 	}
 	
-	public void discardWorkingCopy(Path filePath) {
+	public void discardWorkingCopy(File filePath) {
 		filePath = validatePath(filePath);
 		String key = getKeyFromPath(filePath);
 		ModuleEntry entry = cache.get(key);
@@ -124,16 +123,16 @@ public class ModuleParseCache {
 	
 	public class ModuleEntry {
 		
-		public static final int FILE_MODIFY_TIME__GRANULARITY_Millis = 1_000_000;
+		public static final int FILE_MODIFY_TIME__GRANULARITY_Millis = 1000000;
 		
-		protected final Path filePath;
+		protected final File filePath;
 		
 		protected String source = null;
 		protected volatile boolean isWorkingCopy = false;
-		protected BasicFileAttributes sourceFileSyncAttributes;
+		protected FileEntry sourceFileSyncAttributes;
 		protected volatile ParsedModule parsedModule = null;
 		
-		public ModuleEntry(Path filePath) {
+		public ModuleEntry(File filePath) {
 			this.filePath = filePath;
 			assertTrue(filePath != null);
 		}
@@ -151,13 +150,13 @@ public class ModuleParseCache {
 				return true;
 			}
 			
-			BasicFileAttributes newAttributes;
-			try {
-				newAttributes = Files.readAttributes(filePath, BasicFileAttributes.class);
-			} catch (IOException e) {
+			FileEntry newAttributes;
+			newAttributes = new FileEntry(filePath);
+
+			if (!filePath.exists()) {
 				return true;
 			}
-			
+
 			return hasBeenModified(sourceFileSyncAttributes, newAttributes);
 		}
 		
@@ -169,7 +168,7 @@ public class ModuleParseCache {
 		}
 		
 		protected void readSource() throws IOException, FileNotFoundException {
-			sourceFileSyncAttributes = Files.readAttributes(filePath, BasicFileAttributes.class);
+			sourceFileSyncAttributes = new FileEntry(filePath);
 			String fileContents = FileUtil.readStringFromFile(filePath, StringUtil.UTF8); // TODO: detect encoding
 			setNewSource(fileContents);
 		}
@@ -225,11 +224,11 @@ public class ModuleParseCache {
 		
 	}
 	
-	public static boolean hasBeenModified(BasicFileAttributes originalAttributes, BasicFileAttributes newAttributes) {
+	public static boolean hasBeenModified(FileEntry originalAttributes, FileEntry newAttributes) {
 		return 
 				originalAttributes == null ||
-				originalAttributes.lastModifiedTime().toMillis() != newAttributes.lastModifiedTime().toMillis() ||
-				originalAttributes.size() != newAttributes.size();
+				originalAttributes.getLastModified() != newAttributes.getLastModified() ||
+				originalAttributes.getLength() != newAttributes.getLength();
 	}
 
 }

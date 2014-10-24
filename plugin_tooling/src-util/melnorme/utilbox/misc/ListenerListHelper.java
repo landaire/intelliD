@@ -18,7 +18,6 @@ import java.util.List;
 /**
  * Helper to manage a listener list, then used to fire events.
  * This class is designed to be thread safe.
- * @see also {@link org.eclipse.core.runtime.ListenerList} 
  */
 public class ListenerListHelper<LISTENER> implements IListenerList<LISTENER> {
 	
@@ -34,7 +33,7 @@ public class ListenerListHelper<LISTENER> implements IListenerList<LISTENER> {
 	
 	@Override
 	public void addListener(LISTENER listener) {
-		ArrayList<LISTENER> newListeners = new ArrayList<>(listeners);
+		ArrayList<LISTENER> newListeners = new ArrayList<LISTENER>(listeners);
 		newListeners.add(listener);
 		
 		setNewListeners(newListeners);

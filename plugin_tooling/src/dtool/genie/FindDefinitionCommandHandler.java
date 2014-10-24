@@ -10,8 +10,8 @@
  *******************************************************************************/
 package dtool.genie;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.HashMap;
 
 import dtool.engine.operations.FindDefinitionResult;
@@ -37,7 +37,7 @@ public class FindDefinitionCommandHandler extends JsonCommandHandler {
 	protected void writeResponseJsonContents() throws IOException, GenieCommandException {
 		System.out.println(StringUtil.collToString(commandArguments.entrySet(), "\n"));
 		
-		Path modulePath = getPath(commandArguments, "filepath");
+		File modulePath = getPath(commandArguments, "filepath");
 		int offset = getInt(commandArguments, "offset");
 		
 		FindDefinitionResult cmdResult = getDToolServer().doFindDefinition(modulePath, offset);

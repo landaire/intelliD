@@ -20,8 +20,8 @@ import dtool.engine.operations.CompletionSearchResult.PrefixSearchOptions;
 public class PrefixDefUnitSearch extends CommonDefUnitSearch {
 	
 	public final PrefixSearchOptions searchOptions;
-	protected final Set<String> addedDefElements = new HashSet<>();
-	protected final ArrayList<INamedElement> results  = new ArrayList<>();
+	protected final Set<String> addedDefElements = new HashSet<String>();
+	protected final ArrayList<INamedElement> results  = new ArrayList<INamedElement>();
 	
 	public PrefixDefUnitSearch(Module refOriginModule, int refOffset, IModuleResolver moduleResolver) {
 		this(refOriginModule, refOffset, moduleResolver, new PrefixSearchOptions());

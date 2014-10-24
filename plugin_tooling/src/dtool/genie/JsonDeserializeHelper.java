@@ -10,7 +10,7 @@
  *******************************************************************************/
 package dtool.genie;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.Map;
 
 import melnorme.utilbox.misc.MiscUtil;
@@ -69,16 +69,16 @@ public abstract class JsonDeserializeHelper<EXC extends Exception> {
 		return getValue(map, propName, Boolean.class, false);
 	}
 	
-	protected Path getPath(Map<String, Object> map, String propName) throws EXC {
+	protected File getPath(Map<String, Object> map, String propName) throws EXC {
 		return getPath(map, propName, false);
 	}
-	protected Path getPathOrNull(Map<String, Object> map, String propName) throws EXC {
+	protected File getPathOrNull(Map<String, Object> map, String propName) throws EXC {
 		return getPath(map, propName, true);
 	}
 	
-	protected Path getPath(Map<String, Object> map, String propName, boolean allowNull) throws EXC {
+	protected File getPath(Map<String, Object> map, String propName, boolean allowNull) throws EXC {
 		String pathString = getValue(map, propName, String.class, allowNull);
-		Path path = pathString == null ? null : MiscUtil.createPathOrNull(pathString);
+		File path = pathString == null ? null : MiscUtil.createPathOrNull(pathString);
 		if(path == null) {
 			if(allowNull) 
 				return null;

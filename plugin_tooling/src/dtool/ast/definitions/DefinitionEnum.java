@@ -98,7 +98,7 @@ public class DefinitionEnum extends CommonDefinition implements IDeclaration, IS
 	
 	public static class NoEnumBody extends EnumBody {
 		
-		public static NodeListView<EnumMember> NULL_DECLS = new NodeListView<>(new EnumMember[0], false);
+		public static NodeListView<EnumMember> NULL_DECLS = new NodeListView<EnumMember>(new EnumMember[0], false);
 		
 		public NoEnumBody() {
 			super(NULL_DECLS);

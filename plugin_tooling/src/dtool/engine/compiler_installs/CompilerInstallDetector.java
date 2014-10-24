@@ -11,10 +11,10 @@
 package dtool.engine.compiler_installs;
 
 import java.io.File;
-import java.nio.file.Path;
 
 import melnorme.utilbox.misc.StringUtil;
 import dtool.engine.compiler_installs.CompilerInstall.ECompilerType;
+import org.apache.commons.io.FileUtils;
 
 public class CompilerInstallDetector {
 	
@@ -23,8 +23,8 @@ public class CompilerInstallDetector {
 	public CompilerInstallDetector() {
 	}
 	
-	public CompilerInstall detectInstallFromCompilerCommandPath(Path commandPath) {
-		String fileName = commandPath.getFileName().toString();
+	public CompilerInstall detectInstallFromCompilerCommandPath(File commandPath) {
+		String fileName = commandPath.getName();
 		
 		if(fileName.equals(SPECIAL_EMPTY_INSTALL)) {
 			// Special compiler install with no modules. Useful for testing purposes.
@@ -42,91 +42,91 @@ public class CompilerInstallDetector {
 		return null;
 	}
 	
-	protected CompilerInstall detectDMDInstall(Path commandPath) {
-		Path cmdDir = commandPath.getParent();
+	protected CompilerInstall detectDMDInstall(File commandPath) {
+		File cmdDir = commandPath.getParentFile();
 		
-		if(cmdDir.resolve("../../src/druntime").toFile().exists()) {
-			return new CompilerInstall(commandPath, ECompilerType.DMD, 
-				cmdDir.resolve("../../src/druntime/import"),
-				cmdDir.resolve("../../src/phobos"));
+		if(FileUtils.getFile(cmdDir, "../../src/druntime").exists()) {
+			return new CompilerInstall(commandPath, ECompilerType.DMD,
+				FileUtils.getFile(cmdDir, "../../src/druntime/import"),
+				FileUtils.getFile(cmdDir, "../../src/phobos"));
 		}
 		// a MacOSX layout:
-		if(cmdDir.resolve("../src/druntime").toFile().exists()) {
-			return new CompilerInstall(commandPath, ECompilerType.DMD, 
-				cmdDir.resolve("../src/druntime/import"),
-				cmdDir.resolve("../src/phobos"));
+		if(FileUtils.getFile(cmdDir, "../src/druntime").exists()) {
+			return new CompilerInstall(commandPath, ECompilerType.DMD,
+				FileUtils.getFile(cmdDir, ("../src/druntime/import")),
+				FileUtils.getFile(cmdDir, ("../src/phobos")));
 		}
 		// another MacOSX layout
-		Path resolvedCmdPath = cmdDir.resolve("../share/dmd/bin/dmd");
-		if(resolvedCmdPath.toFile().exists()) {
-			Path resolvedCmdDir = resolvedCmdPath.getParent();
-			if(resolvedCmdDir.resolve("../src/druntime").toFile().exists()) {
-				return new CompilerInstall(resolvedCmdPath, ECompilerType.DMD, 
-					resolvedCmdDir.resolve("../src/druntime/import"),
-					resolvedCmdDir.resolve("../src/phobos"));
+		File resolvedCmdPath = FileUtils.getFile(cmdDir, "../share/dmd/bin/dmd");
+		if(resolvedCmdPath.exists()) {
+			File resolvedCmdDir = resolvedCmdPath.getParentFile();
+			if(FileUtils.getFile(resolvedCmdDir, "../src/druntime").exists()) {
+				return new CompilerInstall(resolvedCmdPath, ECompilerType.DMD,
+					FileUtils.getFile(resolvedCmdDir, "../src/druntime/import"),
+					FileUtils.getFile(resolvedCmdDir, "../src/phobos"));
 			}
 		}
 		
-		if(cmdDir.resolve("../include/dlang/dmd").toFile().exists()) {
+		if(FileUtils.getFile(cmdDir, "../include/dlang/dmd").exists()) {
 			return new CompilerInstall(commandPath, ECompilerType.DMD, 
-				cmdDir.resolve("../include/dlang/dmd"));
+				FileUtils.getFile(cmdDir, "../include/dlang/dmd"));
 		}
 		
-		if(cmdDir.resolve("../include/dmd").toFile().exists()) {
+		if(FileUtils.getFile(cmdDir, "../include/dmd").exists()) {
 			return new CompilerInstall(commandPath, ECompilerType.DMD, 
-				cmdDir.resolve("../include/dmd/druntime/import"),
-				cmdDir.resolve("../include/dmd/phobos"));
+				FileUtils.getFile(cmdDir, "../include/dmd/druntime/import"),
+				FileUtils.getFile(cmdDir, "../include/dmd/phobos"));
 		}
 		
-		if(cmdDir.resolve("../../include/d/dmd").toFile().exists()) {
+		if(FileUtils.getFile(cmdDir, "../../include/d/dmd").exists()) {
 			return new CompilerInstall(commandPath, ECompilerType.DMD, 
-				cmdDir.resolve("../../include/d/dmd/druntime/import"),
-				cmdDir.resolve("../../include/d/dmd/phobos"));
+				FileUtils.getFile(cmdDir, "../../include/d/dmd/druntime/import"),
+				FileUtils.getFile(cmdDir, "../../include/d/dmd/phobos"));
 		}
 		return null;
 	}
 	
-	protected CompilerInstall detectLDCInstall(Path commandPath) {
-		Path cmdDir = commandPath.getParent();
+	protected CompilerInstall detectLDCInstall(File commandPath) {
+		File cmdDir = commandPath.getParentFile();
 		
-		if(cmdDir.resolve("../include/dlang/ldc").toFile().exists()) {
+		if(FileUtils.getFile(cmdDir, "../include/dlang/ldc").exists()) {
 			return new CompilerInstall(commandPath, ECompilerType.LDC, 
-				cmdDir.resolve("../include/dlang/ldc"));
+				FileUtils.getFile(cmdDir, "../include/dlang/ldc"));
 		}
 		
-		if(cmdDir.resolve("../import/core").toFile().exists()) {
+		if(FileUtils.getFile(cmdDir, "../import/core").exists()) {
 			return new CompilerInstall(commandPath, ECompilerType.LDC,
-				cmdDir.resolve("../import/ldc"),
-				cmdDir.resolve("../import"));
+				FileUtils.getFile(cmdDir, "../import/ldc"),
+				FileUtils.getFile(cmdDir, "../import"));
 		}
 		return null;
 	}
 	
-	protected CompilerInstall detectGDCInstall(Path commandPath) {
-		Path cmdDir = commandPath.getParent();
+	protected CompilerInstall detectGDCInstall(File commandPath) {
+		File cmdDir = commandPath.getParentFile();
 		
-		if(cmdDir.resolve("../include/dlang/gdc").toFile().exists()) {
+		if(FileUtils.getFile(cmdDir, "../include/dlang/gdc").exists()) {
 			return new CompilerInstall(commandPath, ECompilerType.GDC, 
-				cmdDir.resolve("../include/dlang/gdc"));
+				FileUtils.getFile(cmdDir, "../include/dlang/gdc"));
 		}
 		
-		CompilerInstall install = checkGDCLibrariesAt(cmdDir.resolve("../include/d"), commandPath);
+		CompilerInstall install = checkGDCLibrariesAt(FileUtils.getFile(cmdDir, "../include/d"), commandPath);
 		if(install != null) 
 			return install;
 		
-		return checkGDCLibrariesAt(cmdDir.resolve("../include/d2"), commandPath);
+		return checkGDCLibrariesAt(FileUtils.getFile(cmdDir, "../include/d2"), commandPath);
 	}
 	
-	protected CompilerInstall checkGDCLibrariesAt(Path includeD2Dir, Path commandPath) {
-		if(includeD2Dir.toFile().exists()) {
+	protected CompilerInstall checkGDCLibrariesAt(File includeD2Dir, File commandPath) {
+		if(includeD2Dir.exists()) {
 			
-			File[] d2entries = includeD2Dir.toFile().listFiles();
+			File[] d2entries = includeD2Dir.listFiles();
 			if(d2entries == null) // Same as IOException
 				return null;
 			
 			for (File d2entry : d2entries) {
 				if(d2entry.isDirectory() && new File(d2entry, "object.di").exists()) {
-					return new CompilerInstall(commandPath, ECompilerType.GDC, d2entry.toPath());
+					return new CompilerInstall(commandPath, ECompilerType.GDC, d2entry);
 				}
 			}
 			

@@ -14,7 +14,7 @@ import static melnorme.utilbox.core.Assert.AssertNamespace.assertFail;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertNotNull;
 import static melnorme.utilbox.core.Assert.AssertNamespace.assertTrue;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +37,7 @@ public class DeeParser
 	extends DeeParser_Statements 
 {
 	
-	protected ArrayList<ParserError> lexerErrors = new ArrayList<>();
+	protected ArrayList<ParserError> lexerErrors = new ArrayList<ParserError>();
 	
 	public DeeParser(String source) {
 		this(new DeeLexer(source));
@@ -51,7 +51,7 @@ public class DeeParser
 	}
 	
 	public static final class DeeLexElementProducer extends LexElementProducer {
-		protected ArrayList<ParserError> lexerErrors = new ArrayList<>();
+		protected ArrayList<ParserError> lexerErrors = new ArrayList<ParserError>();
 		
 		@Override
 		protected void tokenParsed(Token token) {
@@ -68,21 +68,21 @@ public class DeeParser
 		return parseSource(source, defaultModuleName, null);
 	}
 	
-	public static ParsedModule parseSource(String source, String defaultModuleName, Path modulePath) {
+	public static ParsedModule parseSource(String source, String defaultModuleName, File modulePath) {
 		return new DeeParser(source).parseModuleSource(defaultModuleName, modulePath);
 	}
 	
-	public static ParsedModule parseSource(String source, Path modulePath) {
+	public static ParsedModule parseSource(String source, File modulePath) {
 		return new DeeParser(source).parseModuleSource(modulePath);
 	}
 	
-	public ParsedModule parseModuleSource(Path modulePath) {
-		String fileName = modulePath.getFileName().toString();
+	public ParsedModule parseModuleSource(File modulePath) {
+		String fileName = modulePath.getName();
 		String defaultModuleName = ModuleNamingRules.getDefaultModuleNameFromFileName(fileName);
 		return parseModuleSource(defaultModuleName, modulePath);
 	}
 	
-	public ParsedModule parseModuleSource(String defaultModuleName, Path modulePath) {
+	public ParsedModule parseModuleSource(String defaultModuleName, File modulePath) {
 		NodeResult<Module> nodeResult = parseModule(defaultModuleName, modulePath);
 		return (ParsedModule) prepParseResult(null, nodeResult, modulePath);
 	}
@@ -112,7 +112,7 @@ public class DeeParser
 	}
 	
 	protected DeeParserResult prepParseResult(ParseRuleDescription parseRule, NodeResult<?> nodeResult, 
-			Path modulePath) {
+			File modulePath) {
 		assertTrue(enabled);
 		ASTNode node = nodeResult.node;
 		if(node != null) {

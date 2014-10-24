@@ -10,13 +10,14 @@
  *******************************************************************************/
 package melnorme.utilbox.concurrency;
 
+import java.io.Closeable;
 import java.util.concurrent.CountDownLatch;
 
 /**
  * A latchRunnable provides a two way (entry and exit) concurrency barrier.
  * It is useful mostly for tests related to concurrent code.
  */
-public class LatchRunnable implements Runnable, AutoCloseable {
+public class LatchRunnable implements Runnable, Closeable {
 	
 	public final CountDownLatch entryLatch = new CountDownLatch(1);
 	public final CountDownLatch exitLatch = new CountDownLatch(1);

@@ -98,7 +98,7 @@ public class JsonReaderExt extends JsonReader {
 	public ArrayList<String> consumeStringArray(boolean ignoreNulls) throws IOException {
 		jsonReader.consumeExpected(JsonToken.BEGIN_ARRAY);
 		
-		ArrayList<String> strings = new ArrayList<>();
+		ArrayList<String> strings = new ArrayList<String>();
 		
 		while(jsonReader.hasNext()) {
 			JsonToken tokenType = jsonReader.peek();
@@ -179,7 +179,7 @@ public class JsonReaderExt extends JsonReader {
 	public static HashMap<String, Object> readJsonObject(JsonReaderExt jsonParser) throws IOException {
 		jsonParser.consumeExpected(JsonToken.BEGIN_OBJECT);
 		
-		HashMap<String, Object> jsonObject = new HashMap<>();
+		HashMap<String, Object> jsonObject = new HashMap<String, Object>();
 		
 		while(jsonParser.tryConsume(JsonToken.END_OBJECT) == false) {
 			String propName = jsonParser.consumeExpectedPropName();
@@ -193,7 +193,7 @@ public class JsonReaderExt extends JsonReader {
 	public ArrayList<Object> readJsonArray() throws IOException {
 		jsonReader.consumeExpected(JsonToken.BEGIN_ARRAY);
 		
-		ArrayList<Object> array = new ArrayList<>();
+		ArrayList<Object> array = new ArrayList<Object>();
 		while(jsonReader.hasNext()) {
 			array.add(readJsonValue());
 		}
