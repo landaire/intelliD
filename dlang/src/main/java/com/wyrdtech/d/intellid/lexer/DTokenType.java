@@ -50,7 +50,10 @@ public abstract class DTokenType implements com.intellij.psi.TokenType {
                                                             BLOCK_COMMENT_NEST,
                                                             DOC_COMMENT,
                                                             DOC_COMMENT_NEST);
-    public static final TokenSet STRING_LITERALS = TokenSet.create(CHAR_LITERAL,
+    public static final TokenSet STRING_LITERALS = TokenSet.create(
+                                                                    valueOf(DeeTokens.STRING_WYSIWYG),
+                                                                    valueOf(DeeTokens.STRING_DELIM),
+                                                                    CHAR_LITERAL,
                                                                    WSTR_LITERAL,
                                                                    DSTR_LITERAL,
                                                                    STRING_LITERAL);
