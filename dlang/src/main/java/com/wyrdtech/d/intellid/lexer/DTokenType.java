@@ -32,7 +32,7 @@ public abstract class DTokenType implements com.intellij.psi.TokenType {
     public static final DElementType DOC_COMMENT = valueOf(DeeTokens.DOCCOMMENT_MULTI);
     public static final DElementType DOC_COMMENT_NEST = valueOf(DeeTokens.DOCCOMMENT_NESTED);
 
-    public static final DElementType LITERAL = valueOf(DeeTokens.GROUP_STRING);
+
     public static final DElementType CHAR_LITERAL = valueOf(DeeTokens.KW_CHAR);
     public static final DElementType STRING_LITERAL = valueOf(DeeTokens.STRING_DQ);
     public static final DElementType WSTR_LITERAL = valueOf(DeeTokens.KW_DCHAR);
@@ -54,6 +54,14 @@ public abstract class DTokenType implements com.intellij.psi.TokenType {
                                                                    WSTR_LITERAL,
                                                                    DSTR_LITERAL,
                                                                    STRING_LITERAL);
+
+    public static final TokenSet INTEGER_LITERALS = TokenSet.create(valueOf(DeeTokens.INTEGER_DECIMAL),
+            valueOf(DeeTokens.INTEGER_BINARY),
+            valueOf(DeeTokens.INTEGER_OCTAL),
+            valueOf(DeeTokens.INTEGER_HEX));
+
+    public static final TokenSet FLOAT_LITERALS = TokenSet.create(valueOf(DeeTokens.FLOAT_DECIMAL),
+            valueOf(DeeTokens.FLOAT_HEX));
 
     public static final TokenSet PARENS = TokenSet.create(valueOf(DeeTokens.OPEN_PARENS),
                                                           valueOf(DeeTokens.CLOSE_PARENS));
@@ -284,6 +292,12 @@ public abstract class DTokenType implements com.intellij.psi.TokenType {
         }
         if (STRING_LITERALS.contains(type)) {
             set = STRING_LITERALS;
+        }
+        if (INTEGER_LITERALS.contains(type)) {
+            set = INTEGER_LITERALS;
+        }
+        if (FLOAT_LITERALS.contains(type)) {
+            set = FLOAT_LITERALS;
         }
         if (WHITESPACES.contains(type)) {
             set = WHITESPACES;
