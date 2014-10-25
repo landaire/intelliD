@@ -19,7 +19,7 @@ This project consists of two modules:
 - Dlang, the IntelliJ plugin
 - plugin_tooling
 
-plugin_tooling was created by Bruno Medeiros as part of [DDT], an Eclipse-based IDE for D.
+plugin_tooling was created by Bruno Medeiros as part of [DDT](https://github.com/bruno-medeiros/DDT), an Eclipse-based IDE for D.
 
 The following changes to DDT were necessary to get the project up faster:
 
