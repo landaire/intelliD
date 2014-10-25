@@ -18,6 +18,8 @@ public class DFileType extends LanguageFileType {
     public static final String SOURCE_EXTENSION = "d";
     public static final String HEADER_EXTENSION = "di";
 
+    public static final Icon D_ICON = IconLoader.getIcon("/icons/d.png");
+
     private DFileType() {
         super(DLanguage.INSTANCE);
     }
@@ -45,6 +47,6 @@ public class DFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return IconLoader.getIcon("/icons/d.png");
+        return D_ICON;
     }
 }
