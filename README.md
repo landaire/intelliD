@@ -4,13 +4,13 @@ D Language plugin for JetBrains IntelliJ
 
 These are my near-future goals in order of importance:
 
-[X] Lexer
-[X] Highlighter
-[X] Brace Matcher
-[] Project SDK setup
-[] Compiling
-[] Code completion
-[] Debugging
+- [x] Lexer
+- [x] Highlighter
+- [x] Brace Matcher
+- [ ] Project SDK setup
+- [ ] Compiling
+- [ ] Code completion
+- [ ] Debugging
 
 Based off of [intelliD by elendl-](https://github.com/elendel-/intelliD)
 
