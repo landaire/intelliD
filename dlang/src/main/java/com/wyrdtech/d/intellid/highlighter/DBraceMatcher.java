@@ -12,7 +12,7 @@ public class DBraceMatcher implements PairedBraceMatcher {
     private static final BracePair[] PAIRS = {
             bracePairFromTokenSet(DTokenType.PARENS, true),
             bracePairFromTokenSet(DTokenType.BRACKET, false),
-            bracePairFromTokenSet(DTokenType.BRACKET, true),
+            bracePairFromTokenSet(DTokenType.BRACE, true),
     };
 
     private static BracePair bracePairFromTokenSet(TokenSet set, boolean isStructural) {
