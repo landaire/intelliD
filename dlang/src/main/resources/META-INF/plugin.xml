@@ -57,6 +57,9 @@
         <lang.braceMatcher language="D"
                            implementationClass="com.wyrdtech.d.intellid.highlighter.DBraceMatcher"/>
 
+        <!-- SDK stuff -->
+        <sdkType implementation="com.wyrdtech.d.intellid.sdk.DSdkType"/>
+
     </extensions>
 
 </idea-plugin>
