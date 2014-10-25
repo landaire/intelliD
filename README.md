@@ -10,7 +10,12 @@ These are my near-future goals in order of importance:
 - [ ] Project SDK setup
 - [ ] Compiling
 - [ ] Code completion
+- [ ] Error highlighting
 - [ ] Debugging
+
+[Reference](https://confluence.jetbrains.com/display/IDEADEV/Developing+Custom+Language+Plugins+for+IntelliJ+IDEA)
+
+## About
 
 Based off of [intelliD by elendl-](https://github.com/elendel-/intelliD)
 
