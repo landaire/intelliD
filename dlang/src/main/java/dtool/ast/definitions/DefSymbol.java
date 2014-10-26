@@ -1,0 +1,39 @@
+package dtool.ast.definitions;
+
+import dtool.ast.ASTCodePrinter;
+import dtool.ast.ASTNode;
+import dtool.ast.ASTNodeTypes;
+
+import static dtool.util.NewUtils.assertCast;
+
+
+/**
+ * A Symbol that is the name of a DefUnit, and that knows how to get
+ * that DefUnit. Its node parent must be the corresponding DefUnit.
+ */
+public class DefSymbol extends Symbol {
+	
+	public DefSymbol(String id) {
+		super(id);
+	}
+	
+	@Override
+	public ASTNodeTypes getNodeType() {
+		return ASTNodeTypes.SYMBOL;
+	}
+	
+	@Override
+	protected ASTNode getParent_Concrete() {
+		return assertCast(parent, DefUnit.class);
+	}
+	
+	/** @return the defunit associated with this defSymbol. Cannot be null. */
+	public DefUnit getDefUnit() {
+		return (DefUnit) getParent();
+	}
+	
+	@Override
+	public void toStringAsCode(ASTCodePrinter cp) {
+		cp.append(name);
+	}
+}

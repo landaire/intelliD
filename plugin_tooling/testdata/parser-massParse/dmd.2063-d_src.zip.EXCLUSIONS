@@ -1,5 +1,0 @@
-# TODO remove these valid entries:
-/phobos/std/regex.d
-
-# is a HTML file:
-phobos/index.d

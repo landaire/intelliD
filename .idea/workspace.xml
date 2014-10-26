@@ -2,6 +2,382 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="144e2580-5c89-4d88-9156-be71a2705bcf" name="Default" comment="Numeric literal parsing, with some tests.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/util/ASTChildrenCollector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ASTCodePrinter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/util/ASTDirectChildrenVisitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ASTNode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ASTNodeFinder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/util/ASTNodeFinderExtension.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ASTNodeTypes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/util/ASTSourceRangeChecker.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ASTSwitchVisitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ASTVisitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/AbstractBundleResolution.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/cmdline/AbstractClientOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AbstractConditionalDeclaration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/AbstractDToolOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-lang/melnorme/lang/tooling/AbstractElementName.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/process/AbstractExternalProcessHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/AbstractFunctionDefinition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/melnorme/utilbox/iteration/AbstractIterator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/AbstractLexer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/AbstractParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/AbstractSocketServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/melnorme/utilbox/iteration/ArrayListDeque.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/ArrayUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/ArrayUtilExt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/ArrayView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/ArrayViewExt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/Assert.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AttribAlign.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AttribAtKeyword.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AttribBasic.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AttribCustom.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AttribLinkage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AttribPragma.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/AttribProtection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/Attribute.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/AutoReference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/BaseLexElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/BlockStatement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/BlockStatementUnscoped.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/BundleModules.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/modules/BundleModulesVisitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/BundlePath.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/BundleResolution.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/ByteArrayOutputStreamExt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/CStyleRootRef.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/CStyleVarArgsParameter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/util/CachingRegistry.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/CatchClause.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/collections/ChainedIterator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/melnorme/utilbox/iteration/ChainedIterator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/melnorme/utilbox/iteration/ChainedIterator2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/CodeCompletionOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/CollectionUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/CommonDefUnitSearch.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/CommonDefVarSemantics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/CommonDefinition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/CommonDubParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/CommonException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/intrinsics/CommonLanguageIntrinsics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/modules/CommonModuleResolver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/CommonNativeTypeReference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/CommonQualifiedReference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/CommonRefIdentifier.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/CommonStatementList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tests/CommonTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tests/CommonTestExt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tests/CommonTestUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/compiler_installs/CompilerInstall.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/compiler_installs/CompilerInstallDetector.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/CompletionSearchResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/melnorme/utilbox/iteration/CopyableListIterator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/CoreUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/DToolBundle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/DToolServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/descent/core/ddoc/Ddoc.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ddoc/DdocMacros.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/descent/core/ddoc/DdocParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/descent/core/ddoc/DdocSection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclBlock.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationAliasThis.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationAllocatorFunction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationAttrib.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationDebugVersion.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationDebugVersionSpec.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationEmpty.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DeclarationEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationImport.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationInvariant.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DeclarationMixin.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationMixinString.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationSpecialFunction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationStaticAssert.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationStaticIf.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/DeclarationUnitTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/descent/core/ddoc/DeeDocAccessor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeLexer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeLexerErrors.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeLexerKeywordHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeLexingUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParserResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParser_Common.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParser_Declarations.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParser_Definitions.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParser_Parameters.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParser_RefOrExp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeParser_Statements.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeTokenHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeTokenSemantics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/DeeTokens.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/DefElementCommon.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefSymbol.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefUnit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/DefUnitSearch.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefVarFragment.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionAggregate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionAlias.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionAliasFunctionDecl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionAliasVarDecl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionConstructor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionEnum.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionEnumVar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionFunction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionMixinInstance.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionStruct.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionTemplate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionUnion.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/DefinitionVariable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/DevelopmentCodeMarkers.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/DubBuildOutputParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/DubBundle.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/DubBundleDescription.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/DubDescribeParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/DubHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/DubManifestParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/EArcheType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/EmptyStatement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/EnumMember.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/ExceptionAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/ExceptionTrackingRunnable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/concurrency/ExecutorTaskAgent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpArrayLength.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpAssert.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpCall.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpCast.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpCastQual.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpConditional.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpFunctionLiteral.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpImportString.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpIndex.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpInfix.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpIs.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpLiteralArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpLiteralBool.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpLiteralChar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpLiteralFloat.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpLiteralInteger.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpLiteralMapArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpLiteralString.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpMixinString.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpNew.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpNewAnonClass.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpNull.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpParentheses.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpPostfixOperator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpPrefix.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpReference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpSimpleLambda.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpSlice.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpSuper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpThis.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpTraits.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/ExpTypeId.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/Expression.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/process/ExternalProcessHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/process/ExternalProcessNotifyingHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/util/FileCachingEntry.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/FileUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/FindDefinitionCommandHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/FindDefinitionOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/cmdline/FindDefinitionRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-lang/melnorme/lang/tooling/ops/FindDefinitionResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/FindDefinitionResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/ForeachRangeExpression.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/ForeachVariableDef.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/fntypes/Function.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/FunctionAttributes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/FunctionBody.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/FunctionBodyOutBlock.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/FunctionParameter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/GenieMain.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/GenieServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/descent/core/ddoc/HTMLPrinterUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ddoc/HTMLWriterUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/HashcodeUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/IASTNode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/IASTVisitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/IBundleResolution.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/IByteSequence.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/fntypes/ICallable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/ICallableElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/concurrency/ICommonAgent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/melnorme/utilbox/iteration/ICopyableIterator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/IDeclaration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ddoc/IDeeDocColorConstants.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/IDefElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/ownership/IDisposable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tree/IElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/IFunctionBody.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/IFunctionParameter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/IInitializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/IListenerList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/modules/IModuleResolver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/INamedElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/INonScopedContainer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/IResolvable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/IScopeNode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/IScopeProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ISourceRange.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/ISourceRepresentation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/IStatement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/concurrency/ITaskAgent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/ITemplatableElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/IToken.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/IValueNode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/IVarDefinitionLike.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tree/IVisitable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/ImportAlias.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/ImportContent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/ImportSelective.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/ImportSelectiveAlias.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/InOutFunctionBody.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/IncompleteDeclarator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/Initializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/InitializerArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/InitializerStruct.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/InitializerVoid.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/InputStoringReader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/intrinsics/InstrinsicsScope.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/intrinsics/IntrinsicDefUnit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/InvalidSyntaxElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/IteratorUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/JsonCommandHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/JsonDeserializeHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-json/com/google/gson/stream/JsonReader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/JsonReaderExt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-json/com/google/gson/stream/JsonScope.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-json/com/google/gson/stream/JsonToken.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-json/com/google/gson/stream/JsonWriter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/JsonWriterExt.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-json/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/LanguageIntrinsics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/concurrency/LatchRunnable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/LexElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/LexElementProducer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/LexElementSource.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/LexerResult.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/ListenerListHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/ListenersHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-json/com/google/gson/stream/MalformedJsonException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/MiscUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/MissingDeclaration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/MissingExpression.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/MissingParenthesesExpression.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/Module.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/modules/ModuleFullName.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/modules/ModuleNamingRules.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/ModuleParseCache.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/ModuleProxy.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/util/NamedElementUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/NamedReference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/NamelessParameter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/NewUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/NodeData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/NodeList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/NodeListView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/util/NodeUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/common/NotAValueErrorElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/modules/NullModuleResolver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/NumUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/NumberUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/concurrency/OperationCancellation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/ownership/OwnedObjects.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/PackageNamespace.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/Pair.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/ParserError.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/fntypes/Predicate.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/PrefixDefUnitSearch.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/process/ProcessHelperMessages.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-lang/melnorme/lang/utils/ProcessUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/ProgramArgumentsHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-json/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefIdentifier.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefImportSelection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefIndexing.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefModule.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefModuleQualified.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefPrimitive.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefQualified.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefSlice.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefTemplateInstance.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefTypeDynArray.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefTypeFunction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefTypeModifier.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefTypePointer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/RefTypeof.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/references/Reference.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/resolver/ReferenceResolver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/util/ReferenceSwitchHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/ReflectionUtils.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/expressions/Resolvable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/ResolveDocViewOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/dub/ResolvedManifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/concurrency/SafeRunnable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/ScopedStatementList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/compiler_installs/SearchCompilersOnPathOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/SearchPathEnvOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/SemanticManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/SentinelArrayList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/cmdline/ShutdownServerRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/SimpleLogger.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tree/SimpleTreeElement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/SimpleVariableDef.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-lang/melnorme/lang/tooling/ops/SourceLineColumnLocation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-lang/melnorme/lang/tooling/ast/SourceRange.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/engine/StandardLibraryResolution.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/genie/cmdline/StartServerOperation.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/Statement.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementAsm.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementBreak.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementCase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementCaseRange.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementContinue.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementDefault.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementDoWhile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementExpression.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementFor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementForeach.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementGoto.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementGotoCase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementGotoDefault.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementIf.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementIfVar.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementLabel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementReturn.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementScope.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementSwitch.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementSynchronized.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementThrow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementTry.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementWhile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/StatementWith.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/declarations/StaticIfExpIs.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/StatusException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/StreamUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/misc/StringUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/Symbol.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/TemplateAliasParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/TemplateParameter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/TemplateThisParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/TemplateTupleParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/TemplateTypeParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/definitions/TemplateValueParam.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tests/TestsWorkingDir.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ddoc/TextUI.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/util/TimePerfUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/parser/common/Token.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tree/TreeDepthFinder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tree/TreeVisitor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/tree/TreeVisitorUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src/main/java/dtool/ast/statements/VariableDefWithInit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dlang/src-util/melnorme/utilbox/core/fntypes/VoidFunction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dlang/dlang.iml" afterPath="$PROJECT_DIR$/dlang/dlang.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="intellid.iws" />
@@ -83,57 +459,107 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DBraceMatcher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/highlighter/DBraceMatcher.java">
+      <file leaf-file-name="BlockStatement.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/BlockStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RefModule.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/references/RefModule.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Module.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/definitions/Module.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2265">
+              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NamelessParameter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/definitions/NamelessParameter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945">
+              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IASTNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/IASTNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ASTNode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/ASTNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5565">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#885#886#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
-                <element signature="e#1151#1152#0" expanded="true" />
-                <element signature="e#1175#1176#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractLexer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/parser/common/AbstractLexer.java">
+      <file leaf-file-name="CodeCompletionOperation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/CodeCompletionOperation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="733" max-vertical-offset="3765">
-              <caret line="84" column="76" selection-start-line="84" selection-start-column="76" selection-end-line="84" selection-end-column="76" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2355">
+              <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DTokenType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/lexer/DTokenType.java">
+      <file leaf-file-name="BundlePath.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dlang/src/main/java/dtool/dub/BundlePath.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3450" max-vertical-offset="4665">
-              <caret line="263" column="13" selection-start-line="263" selection-start-column="13" selection-end-line="263" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="774" max-vertical-offset="1485">
+              <caret line="77" column="23" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2186#2187#0" expanded="true" />
+                <element signature="e#2246#2247#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatementBreak.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/StatementBreak.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DElementType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/lexer/DElementType.java">
+      <file leaf-file-name="CatchClause.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/CatchClause.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="plugin.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dlang/src/main/resources/META-INF/plugin.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8245614" vertical-offset="291" max-vertical-offset="1020">
-              <caret line="57" column="90" selection-start-line="57" selection-start-column="90" selection-end-line="57" selection-end-column="90" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
+              <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -159,10 +585,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
-    <option name="y" value="23" />
-    <option name="width" value="1276" />
-    <option name="height" value="777" />
+    <option name="x" value="-1920" />
+    <option name="y" value="-900" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -209,7 +635,67 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="plugin_tooling" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="dlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src-lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -231,11 +717,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="META-INF" />
+              <option name="myItemId" value="dtool" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -257,7 +743,71 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dtool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="operations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dlang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,36 +864,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lexer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intellid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dlang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intellid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="highlighter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -417,6 +937,10 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dlang/src/main/java" />
+      <recent name="$PROJECT_DIR$/dlang" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.wyrdtech.dlang.lexer" />
       <recent name="com.wyrdtech.dlang.intellid.com.wyrdtech.dlang.intellid.lexer" />
@@ -970,6 +1494,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -1096,10 +1625,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4238000" />
+    <option name="totallyTimeSpent" value="4481000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1276" height="777" extended-state="6" />
+    <frame x="-1920" y="-900" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1114,16 +1643,17 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959481" sideWeight="0.6707663" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16400427" sideWeight="0.6707663" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923368" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39854014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39792746" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282876" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32746115" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1132,7 +1662,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32946378" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1197,14 +1726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/lexer/DTokenType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3450" max-vertical-offset="4665">
-          <caret line="263" column="13" selection-start-line="263" selection-start-column="13" selection-end-line="263" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/java/lang/Enum.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2276176" vertical-offset="0" max-vertical-offset="1095">
@@ -1213,14 +1734,6 @@
             <element signature="e#476#477#0" expanded="true" />
             <element signature="e#508#509#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/lexer/DElementType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1274,20 +1787,273 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
           <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-            <element signature="e#1175#1176#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#885#886#0" expanded="false" />
+            <element signature="e#913#914#0" expanded="false" />
+            <element signature="e#1151#1152#0" expanded="false" />
+            <element signature="e#1175#1176#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dlang/src/main/resources/META-INF/plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8245614" vertical-offset="291" max-vertical-offset="1020">
-          <caret line="57" column="90" selection-start-line="57" selection-start-column="90" selection-end-line="57" selection-end-column="90" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="276" max-vertical-offset="1065">
+          <caret line="60" column="69" selection-start-line="60" selection-start-column="69" selection-end-line="60" selection-end-column="69" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/util.jar!/com/intellij/openapi/util/io/FileUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.30045524" vertical-offset="21948" max-vertical-offset="23595">
+          <caret line="1541" column="44" selection-start-line="1541" selection-start-column="44" selection-end-line="1541" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/DFileTypeFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/openapi/fileTypes/LanguageFileType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27314112" vertical-offset="0" max-vertical-offset="690">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/lexer/DElementType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17116183" vertical-offset="0" max-vertical-offset="964">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/DFileType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6379668" vertical-offset="0" max-vertical-offset="964">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1093#1094#0" expanded="false" />
+            <element signature="e#1122#1123#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/lexer/DLexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10892116" vertical-offset="0" max-vertical-offset="1860">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/com/intellij/ide/IdeEventQueue.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.72" vertical-offset="8702" max-vertical-offset="13305">
+          <caret line="696" column="17" selection-start-line="696" selection-start-column="17" selection-end-line="696" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/lexer/DTokenType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4755">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/sdk/DSdkUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="341" max-vertical-offset="1305">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/sdk/DSdkLibraryPresentationProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/sdk/DSdk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+          <caret line="53" column="66" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1002#1003#0" expanded="false" />
+            <element signature="e#1035#1036#0" expanded="false" />
+            <element signature="e#1082#1083#0" expanded="false" />
+            <element signature="e#1114#1115#0" expanded="false" />
+            <element signature="e#1167#1168#0" expanded="false" />
+            <element signature="e#1205#1206#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/com/wyrdtech/d/intellid/sdk/DSdkType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1421" max-vertical-offset="2415">
+          <caret line="138" column="67" selection-start-line="138" selection-start-column="67" selection-end-line="138" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#1079#1080#0" expanded="true" />
+            <element signature="e#1104#1105#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
+            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#2609#2610#0" expanded="true" />
+            <element signature="e#2663#2664#0" expanded="true" />
+            <element signature="e#2757#2758#0" expanded="true" />
+            <element signature="e#2784#2785#0" expanded="true" />
+            <element signature="e#3179#3180#0" expanded="true" />
+            <element signature="e#3209#3210#0" expanded="true" />
+            <element signature="e#4630#4631#0" expanded="true" />
+            <element signature="e#4670#4671#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/parser/DeeParser_Declarations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2205" max-vertical-offset="7470">
+          <caret line="184" column="40" selection-start-line="184" selection-start-column="40" selection-end-line="184" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4471#4479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/SimpleVariableDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
+          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/StatementAsm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/StatementBreak.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/CatchClause.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
+          <caret line="36" column="4" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/statements/BlockStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/references/RefModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/definitions/Module.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2265">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/definitions/NamelessParameter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/IASTNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin_tooling/src/dtool/ast/ASTNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5565">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/dtool/engine/operations/CodeCompletionOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2355">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dlang/src/main/java/dtool/dub/BundlePath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="774" max-vertical-offset="1485">
+          <caret line="77" column="23" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2186#2187#0" expanded="true" />
+            <element signature="e#2246#2247#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
